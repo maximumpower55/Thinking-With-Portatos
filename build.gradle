@@ -36,15 +36,16 @@ dependencies {
 	})
 
 	modImplementation "org.quiltmc:quilt-loader:${project.loader_version}"
-	modImplementation ("org.quiltmc.quilted-fabric-api:quilted-fabric-api:${qsl_version}+${qfapi_version}")
+	modImplementation "org.quiltmc.quilted-fabric-api:quilted-fabric-api:${project.quilted_version}-${minecraft_version}"
 
-	modImplementation ("com.terraformersmc:modmenu:3.1.1") {
+	modImplementation ("com.terraformersmc:modmenu:${project.mod_menu_version}"){
 		exclude group: "net.fabricmc.fabric-api"
 		exclude group: "net.fabricmc"
 	}
 
+
 	//Gravity Changer - UPDATE TO NEWEST VERSION WHEN ITS RELEASED ON MODRINTH
-	modImplementation include ("maven.modrinth:fusions-gravity-api:0.7.7+fabric"){
+	modImplementation include ("maven.modrinth:fusions-gravity-api:${project.fusions_gravity_api_version}"){
 		exclude group: "net.fabricmc.fabric-api"
 		exclude group: "net.fabricmc"
 		exclude group: "dev.onyxstudios.cardinal-components-api"

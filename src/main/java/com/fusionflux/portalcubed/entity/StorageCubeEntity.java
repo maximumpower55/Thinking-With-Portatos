@@ -1,12 +1,12 @@
 package com.fusionflux.portalcubed.entity;
 
+import com.fusionflux.fusions_gravity_api.api.GravityChangerAPI;
+import com.fusionflux.fusions_gravity_api.util.Gravity;
+import com.fusionflux.fusions_gravity_api.util.RotationUtil;
 import com.fusionflux.portalcubed.accessor.Accessors;
 import com.fusionflux.portalcubed.accessor.CalledValues;
 import com.fusionflux.portalcubed.blocks.PortalCubedBlocks;
 import com.fusionflux.portalcubed.items.PortalCubedItems;
-import me.andrew.gravitychanger.api.GravityChangerAPI;
-import me.andrew.gravitychanger.util.Gravity;
-import me.andrew.gravitychanger.util.RotationUtil;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.damage.DamageSource;
@@ -15,7 +15,6 @@ import net.minecraft.entity.data.TrackedData;
 import net.minecraft.entity.data.TrackedDataHandlerRegistry;
 import net.minecraft.entity.mob.PathAwareEntity;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.network.packet.s2c.play.MobSpawnS2CPacket;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.text.Text;
 import net.minecraft.util.math.MathHelper;
@@ -222,13 +221,14 @@ public class StorageCubeEntity extends PathAwareEntity  {
         }
     }
 
-    public void onKilledOther(ServerWorld world, LivingEntity other) {
+    public boolean onKilledOther(ServerWorld world, LivingEntity other) {
         if(!world.isClient) {
             PlayerEntity player = (PlayerEntity) ((ServerWorld) world).getEntity(getHolderUUID());
             if (player != null) {
                 CalledValues.setCubeUUID(player,null);
             }
         }
+        return true;
     }
 
     protected void updatePostDeath() {
