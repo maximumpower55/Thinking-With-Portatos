@@ -15,47 +15,47 @@ import net.minecraft.world.World;
  */
 public class NeurotoxinEmitterBlockEntity extends BlockEntity {
 
-    public boolean shouldRepair = false;
-    private final BlockPos.Mutable obstructorPos;
+	public boolean shouldRepair = false;
+	private final BlockPos.Mutable obstructorPos;
 
-    public NeurotoxinEmitterBlockEntity(BlockPos pos, BlockState state) {
-        super(PortalCubedBlocks.NEUROTOXIN_EMITTER_ENTITY,pos,state);
-        this.obstructorPos = pos.mutableCopy();
-    }
+	public NeurotoxinEmitterBlockEntity(BlockPos pos, BlockState state) {
+		super(PortalCubedBlocks.NEUROTOXIN_EMITTER_ENTITY,pos,state);
+		this.obstructorPos = pos.mutableCopy();
+	}
 
 
 
-    public static void tick(World world, BlockPos pos, BlockState state, NeurotoxinEmitterBlockEntity blockEntity) {
-        assert world != null;
-        if (!world.isClient) {
-            boolean redstonePowered = world.isReceivingRedstonePower(blockEntity.getPos());
+	public static void tick(World world, BlockPos pos, BlockState state, NeurotoxinEmitterBlockEntity blockEntity) {
+		assert world != null;
+		if (!world.isClient) {
+			boolean redstonePowered = world.isReceivingRedstonePower(blockEntity.getPos());
 
-            if (redstonePowered) {
-                // Update blockstate
-                if (!world.getBlockState(pos).get(Properties.POWERED)) {
-                    blockEntity.togglePowered(world.getBlockState(pos));
-                }
-            }
-            if (!redstonePowered) {
-                // Update blockstate
-                if (world.getBlockState(pos).get(Properties.POWERED)) {
-                    blockEntity.togglePowered(world.getBlockState(pos));
-                }
-            }
-            if (world.isAir(blockEntity.getPos().offset(blockEntity.getCachedState().get(Properties.FACING))) && world.getBlockState(pos).get(Properties.POWERED)) {
-                world.setBlockState(blockEntity.getPos().offset(blockEntity.getCachedState().get(Properties.FACING)), PortalCubedBlocks.NEUROTOXIN_BLOCK.getDefaultState());
-            }
+			if (redstonePowered) {
+				// Update blockstate
+				if (!world.getBlockState(pos).get(Properties.POWERED)) {
+					blockEntity.togglePowered(world.getBlockState(pos));
+				}
+			}
+			if (!redstonePowered) {
+				// Update blockstate
+				if (world.getBlockState(pos).get(Properties.POWERED)) {
+					blockEntity.togglePowered(world.getBlockState(pos));
+				}
+			}
+			if (world.isAir(blockEntity.getPos().offset(blockEntity.getCachedState().get(Properties.FACING))) && world.getBlockState(pos).get(Properties.POWERED)) {
+				world.setBlockState(blockEntity.getPos().offset(blockEntity.getCachedState().get(Properties.FACING)), PortalCubedBlocks.NEUROTOXIN_BLOCK.getDefaultState());
+			}
 
-        }
-    }
+		}
+	}
 
-    public void spookyUpdateObstructor(BlockPos ownerPos) {
-        this.obstructorPos.set(ownerPos);
-    }
+	public void spookyUpdateObstructor(BlockPos ownerPos) {
+		this.obstructorPos.set(ownerPos);
+	}
 
-    private void togglePowered(BlockState state) {
-        assert world != null;
-        world.setBlockState(pos, state.cycle(Properties.POWERED));
-    }
+	private void togglePowered(BlockState state) {
+		assert world != null;
+		world.setBlockState(pos, state.cycle(Properties.POWERED));
+	}
 
 }

@@ -1,6 +1,5 @@
 package com.fusionflux.portalcubed.entity;
 
-import com.fusionflux.portalcubed.accessor.CalledValues;
 import com.fusionflux.portalcubed.items.PortalCubedItems;
 import com.fusionflux.portalcubed.sound.PortalCubedSounds;
 import net.minecraft.entity.EntityType;
@@ -14,46 +13,46 @@ import java.util.Random;
 
 public class CuriosityCoreEntity extends CorePhysicsEntity  {
 
-    public CuriosityCoreEntity(EntityType<? extends PathAwareEntity> type, World world) {
-        super(type, world);
-    }
+	public CuriosityCoreEntity(EntityType<? extends PathAwareEntity> type, World world) {
+		super(type, world);
+	}
 
-    Random ran = new Random();
+	Random ran = new Random();
 
-    private int t = 0;
+	private int t = 0;
 
-    @Override
-    public boolean damage(DamageSource source, float amount) {
-        if (!this.world.isClient && !this.isRemoved()) {
-            boolean bl = source.getAttacker() instanceof PlayerEntity && ((PlayerEntity) source.getAttacker()).getAbilities().creativeMode;
-            if (source.getAttacker() instanceof PlayerEntity || source == DamageSource.OUT_OF_WORLD) {
-                if(source.getAttacker() instanceof PlayerEntity && ((PlayerEntity) source.getAttacker()).getAbilities().allowModifyWorld){
-                    if (this.world.getGameRules().getBoolean(GameRules.DO_ENTITY_DROPS) && !bl) {
-                        this.dropItem(PortalCubedItems.CURIOSITYCORE);
-                    }
-                    this.discard();
-                }
-                if(!(source.getAttacker() instanceof PlayerEntity)) {
-                    if (this.world.getGameRules().getBoolean(GameRules.DO_ENTITY_DROPS) && !bl) {
-                        this.dropItem(PortalCubedItems.CURIOSITYCORE);
-                    }
-                    this.discard();
-                }
-            }
+	@Override
+	public boolean damage(DamageSource source, float amount) {
+		if (!this.world.isClient && !this.isRemoved()) {
+			boolean bl = source.getAttacker() instanceof PlayerEntity && ((PlayerEntity) source.getAttacker()).getAbilities().creativeMode;
+			if (source.getAttacker() instanceof PlayerEntity || source == DamageSource.OUT_OF_WORLD) {
+				if(source.getAttacker() instanceof PlayerEntity && ((PlayerEntity) source.getAttacker()).getAbilities().allowModifyWorld){
+					if (this.world.getGameRules().getBoolean(GameRules.DO_ENTITY_DROPS) && !bl) {
+						this.dropItem(PortalCubedItems.CURIOSITYCORE);
+					}
+					this.discard();
+				}
+				if(!(source.getAttacker() instanceof PlayerEntity)) {
+					if (this.world.getGameRules().getBoolean(GameRules.DO_ENTITY_DROPS) && !bl) {
+						this.dropItem(PortalCubedItems.CURIOSITYCORE);
+					}
+					this.discard();
+				}
+			}
 
-        }
-        return false;
-    }
+		}
+		return false;
+	}
 
-    @Override
-    public void tick() {
-        if (!this.world.isClient) {
-            if (t == 0) {
-                world.playSoundFromEntity(null,this, PortalCubedSounds.CURIOSITY_CORE_EVENT,this.getSoundCategory(),1f,1f);
-                t = 346;
-            }
-            t--;
-        }
-        super.tick();
-    }
+	@Override
+	public void tick() {
+		if (!this.world.isClient) {
+			if (t == 0) {
+				world.playSoundFromEntity(null,this, PortalCubedSounds.CURIOSITY_CORE_EVENT,this.getSoundCategory(),1f,1f);
+				t = 346;
+			}
+			t--;
+		}
+		super.tick();
+	}
 }

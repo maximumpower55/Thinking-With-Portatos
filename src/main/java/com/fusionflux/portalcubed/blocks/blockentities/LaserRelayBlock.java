@@ -21,84 +21,84 @@ import org.jetbrains.annotations.Nullable;
 
 
 public class LaserRelayBlock extends BlockWithEntity {
-    public static final BooleanProperty ENABLE;
+	public static final BooleanProperty ENABLE;
 
-    protected static final VoxelShape SHAPE = Block.createCuboidShape(0.0D, 0.0D, 0.0D, 16.0D, 16.0D, 16.0D);
-
-
-    public LaserRelayBlock(Settings settings) {
-        super(settings);
-        this.setDefaultState(this.stateManager.getDefaultState().with(ENABLE,false));
-    }
-
-    static {
-        ENABLE = Properties.ENABLED;
-    }
-
-    @Override
-    public boolean emitsRedstonePower(BlockState state) {
-        return state.get(Properties.ENABLED);
-    }
-
-    @Override
-    public int getWeakRedstonePower(BlockState state, BlockView world, BlockPos pos, Direction direction) {
-        if(state.get(Properties.ENABLED)){
-            return 15;
-        }
-        return 0;
-    }
-
-    @Override
-    public VoxelShape getCollisionShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
-        return SHAPE;
-    }
-
-    @Override
-    public VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
-        return SHAPE;
-    }
-
-    @Override
-    @Environment(EnvType.CLIENT)
-    public float getAmbientOcclusionLightLevel(BlockState state, BlockView world, BlockPos pos) {
-        return 1.0F;
-    }
-
-    @Override
-    public boolean isTranslucent(BlockState state, BlockView world, BlockPos pos) {
-        return true;
-    }
-
-    @Override
-    public BlockRenderType getRenderType(BlockState state) {
-        return BlockRenderType.MODEL;
-    }
+	protected static final VoxelShape SHAPE = Block.createCuboidShape(0.0D, 0.0D, 0.0D, 16.0D, 16.0D, 16.0D);
 
 
+	public LaserRelayBlock(Settings settings) {
+		super(settings);
+		this.setDefaultState(this.stateManager.getDefaultState().with(ENABLE,false));
+	}
 
-    @Override
-    protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
-        builder.add(Properties.FACING,Properties.ENABLED);
-    }
+	static {
+		ENABLE = Properties.ENABLED;
+	}
 
-    @Override
-    public BlockState getPlacementState(ItemPlacementContext ctx) {
-        return PortalCubedBlocks.LASER_RELAY.getDefaultState().with(Properties.FACING, ctx.getPlayerLookDirection().getOpposite());
-    }
+	@Override
+	public boolean emitsRedstonePower(BlockState state) {
+		return state.get(Properties.ENABLED);
+	}
 
-    @Override
-    public BlockState rotate(BlockState state, BlockRotation rotation) {
-        return state.with(Properties.FACING, rotation.rotate(state.get(Properties.FACING)));
-    }
+	@Override
+	public int getWeakRedstonePower(BlockState state, BlockView world, BlockPos pos, Direction direction) {
+		if(state.get(Properties.ENABLED)){
+			return 15;
+		}
+		return 0;
+	}
 
-    @Override
-    public @Nullable BlockEntity createBlockEntity(BlockPos pos, BlockState state) {
-        return new LaserRelayEntity(pos,state);
-    }
+	@Override
+	public VoxelShape getCollisionShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
+		return SHAPE;
+	}
 
-    @Override
-    public <T extends BlockEntity> BlockEntityTicker<T> getTicker(World world, BlockState state, BlockEntityType<T> type) {
-        return checkType(type, PortalCubedBlocks.LASER_RELAY_ENTITY, LaserRelayEntity::tick1);
-    }
+	@Override
+	public VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
+		return SHAPE;
+	}
+
+	@Override
+	@Environment(EnvType.CLIENT)
+	public float getAmbientOcclusionLightLevel(BlockState state, BlockView world, BlockPos pos) {
+		return 1.0F;
+	}
+
+	@Override
+	public boolean isTranslucent(BlockState state, BlockView world, BlockPos pos) {
+		return true;
+	}
+
+	@Override
+	public BlockRenderType getRenderType(BlockState state) {
+		return BlockRenderType.MODEL;
+	}
+
+
+
+	@Override
+	protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
+		builder.add(Properties.FACING,Properties.ENABLED);
+	}
+
+	@Override
+	public BlockState getPlacementState(ItemPlacementContext ctx) {
+		return PortalCubedBlocks.LASER_RELAY.getDefaultState().with(Properties.FACING, ctx.getPlayerLookDirection().getOpposite());
+	}
+
+	@Override
+	public BlockState rotate(BlockState state, BlockRotation rotation) {
+		return state.with(Properties.FACING, rotation.rotate(state.get(Properties.FACING)));
+	}
+
+	@Override
+	public @Nullable BlockEntity createBlockEntity(BlockPos pos, BlockState state) {
+		return new LaserRelayEntity(pos,state);
+	}
+
+	@Override
+	public <T extends BlockEntity> BlockEntityTicker<T> getTicker(World world, BlockState state, BlockEntityType<T> type) {
+		return checkType(type, PortalCubedBlocks.LASER_RELAY_ENTITY, LaserRelayEntity::tick1);
+	}
 
 }

@@ -2,7 +2,6 @@
   "parent": "minecraft:recipes/root",
   "rewards": {
     "recipes": [
-
       "portalcubed:padded_gray_2x2_panel_bottom_left_crafting",
       "portalcubed:padded_gray_2x2_panel_bottom_right_crafting",
       "portalcubed:padded_gray_2x2_panel_top_left_crafting",
@@ -13,7 +12,6 @@
       "portalcubed:padded_gray_panel_crafting_from_cobbled_deepslate",
       "portalcubed:padded_gray_checkered_panel_crafting",
       "portalcubed:padded_gray_half_panel_crafting"
-
     ]
   },
   "criteria": {
@@ -23,10 +21,10 @@
         "items": [
           {
             "items": [
-"minecraft:deepslate",
-"minecraft:cobbled_deepslate",
-"minecraft:basalt"
-]
+              "minecraft:deepslate",
+              "minecraft:cobbled_deepslate",
+              "minecraft:basalt"
+            ]
           }
         ]
       }

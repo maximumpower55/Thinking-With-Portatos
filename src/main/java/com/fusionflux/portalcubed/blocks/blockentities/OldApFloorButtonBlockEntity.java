@@ -26,57 +26,57 @@ import java.util.List;
  */
 public class OldApFloorButtonBlockEntity extends BlockEntity {
 
-    public final int MAX_RANGE = PortalCubedConfig.maxBridgeLength;
+	public final int MAX_RANGE = PortalCubedConfig.maxBridgeLength;
 
 
-    public OldApFloorButtonBlockEntity(BlockPos pos, BlockState state) {
-        super(PortalCubedBlocks.OLD_AP_FLOOR_BUTTON_BLOCK_ENTITY,pos,state);
+	public OldApFloorButtonBlockEntity(BlockPos pos, BlockState state) {
+		super(PortalCubedBlocks.OLD_AP_FLOOR_BUTTON_BLOCK_ENTITY,pos,state);
 
-    }
+	}
 
-    public static void tick1(World world, BlockPos pos, BlockState state, OldApFloorButtonBlockEntity blockEntity) {
-        if (!world.isClient) {
-            Direction storedDirec = blockEntity.getCachedState().get(Properties.FACING);
-            Direction storedDirecOpp = storedDirec.getOpposite();
-            BlockPos transPos = pos.offset(storedDirec);
+	public static void tick1(World world, BlockPos pos, BlockState state, OldApFloorButtonBlockEntity blockEntity) {
+		if (!world.isClient) {
+			Direction storedDirec = blockEntity.getCachedState().get(Properties.FACING);
+			Direction storedDirecOpp = storedDirec.getOpposite();
+			BlockPos transPos = pos.offset(storedDirec);
 
-            Box portalCheckBox = new Box(transPos);
+			Box portalCheckBox = new Box(transPos);
 
-            portalCheckBox = portalCheckBox.contract(Math.abs(storedDirecOpp.getOffsetX())*.75,Math.abs(storedDirecOpp.getOffsetY())*.75,Math.abs(storedDirecOpp.getOffsetZ())*.75).offset(storedDirecOpp.getOffsetX()*.5,storedDirecOpp.getOffsetY()*.5,storedDirecOpp.getOffsetZ()*.5);
-            List<LivingEntity> entities = world.getNonSpectatingEntities(LivingEntity.class, portalCheckBox);
+			portalCheckBox = portalCheckBox.contract(Math.abs(storedDirecOpp.getOffsetX())*.75,Math.abs(storedDirecOpp.getOffsetY())*.75,Math.abs(storedDirecOpp.getOffsetZ())*.75).offset(storedDirecOpp.getOffsetX()*.5,storedDirecOpp.getOffsetY()*.5,storedDirecOpp.getOffsetZ()*.5);
+			List<LivingEntity> entities = world.getNonSpectatingEntities(LivingEntity.class, portalCheckBox);
 
-            boolean isPowered = false;
-            for (LivingEntity living : entities) {
-                if (living instanceof PlayerEntity || living instanceof StorageCubeEntity || living instanceof CompanionCubeEntity || living instanceof Portal1CompanionCubeEntity || living instanceof Portal1StorageCubeEntity || living instanceof OldApCubeEntity || living instanceof RedirectionCubeEntity) {
-                    isPowered = true;
-                    break;
-                }
-            }
+			boolean isPowered = false;
+			for (LivingEntity living : entities) {
+				if (living instanceof PlayerEntity || living instanceof StorageCubeEntity || living instanceof CompanionCubeEntity || living instanceof Portal1CompanionCubeEntity || living instanceof Portal1StorageCubeEntity || living instanceof OldApCubeEntity || living instanceof RedirectionCubeEntity) {
+					isPowered = true;
+					break;
+				}
+			}
 
-            blockEntity.updateState(state,isPowered);
+			blockEntity.updateState(state,isPowered);
 
-        }
+		}
 
 
-    }
+	}
 
-    public void playSound(SoundEvent soundEvent) {
-        this.world.playSound(null, this.pos, soundEvent, SoundCategory.BLOCKS, 0.1F, 3.0F);
-    }
+	public void playSound(SoundEvent soundEvent) {
+		this.world.playSound(null, this.pos, soundEvent, SoundCategory.BLOCKS, 0.1F, 3.0F);
+	}
 
-    public void updateState(BlockState state, boolean toggle) {
-        if(world != null)
-        world.setBlockState(pos,state.with(Properties.ENABLED,toggle),3);
-    }
+	public void updateState(BlockState state, boolean toggle) {
+		if(world != null)
+		world.setBlockState(pos,state.with(Properties.ENABLED,toggle),3);
+	}
 
-    @Override
-    public void writeNbt(NbtCompound tag) {
-        super.writeNbt(tag);
-    }
+	@Override
+	public void writeNbt(NbtCompound tag) {
+		super.writeNbt(tag);
+	}
 
-    @Override
-    public void readNbt(NbtCompound tag) {
-        super.readNbt(tag);
-    }
+	@Override
+	public void readNbt(NbtCompound tag) {
+		super.readNbt(tag);
+	}
 
 }

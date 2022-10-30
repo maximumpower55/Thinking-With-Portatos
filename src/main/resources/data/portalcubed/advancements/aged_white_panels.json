@@ -2,7 +2,6 @@
   "parent": "minecraft:recipes/root",
   "rewards": {
     "recipes": [
-
       "portalcubed:aged_white_2x2_panel_bottom_left_crafting",
       "portalcubed:aged_white_2x2_panel_bottom_right_crafting",
       "portalcubed:aged_white_2x2_panel_top_left_crafting",
@@ -18,7 +17,6 @@
       "portalcubed:aged_white_2x1_panel_bottom_crafting_from_plants",
       "portalcubed:aged_white_panel_crafting_from_plants",
       "portalcubed:aged_white_half_panel_crafting_from_plants"
-
     ]
   },
   "criteria": {
@@ -27,9 +25,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-"portalcubed:white_panel"
-]
+            "items": ["portalcubed:white_panel"]
           }
         ]
       }

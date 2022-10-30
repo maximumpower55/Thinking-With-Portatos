@@ -1,6 +1,4 @@
 {
   "replace": false,
-  "values" : [
-    "portalcubed:conversion_gel"
-  ]
+  "values": ["portalcubed:conversion_gel"]
 }

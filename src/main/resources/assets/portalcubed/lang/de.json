@@ -6,7 +6,6 @@
   "subtitles.portalcubed.portalgunsecondaryfire": "Portal Gun Sekundärer Schuß",
   "subtitles.portalcubed.portalgunprimaryfire": "Portal Gun Primärer Schuß",
 
-
   "item.portalcubed.long_fall_boots": "Langfallschuhe",
   "item.portalcubed.cube": "Gewichteter Lagerwürfel",
   "item.portalcubed.companion_cube": "Begleiterwürfel",
@@ -53,13 +52,11 @@
   "block.portalcubed.excursion_funnel_emitter": "Exkursionskannal-Strahler",
   "block.portalcubed.sliding_door": "Schiebetür",
 
-
   "block.portalcubed.emitter": "Festlichtbrücken-Strahler",
 
   "text.autoconfig.portalcubed.title": "Denken Mit Portoffeln Konfiguration",
 
   "text.autoconfig.portalcubed.category.numbers": "Itemkonfiguration",
-
 
   "text.autoconfig.portalcubed.category.numbersblock": "Blockkonfiguration",
   "text.autoconfig.portalcubed.option.numbersblock.maxBridgeLength": "Maximale Festlichtbrücken-Länge",
@@ -70,6 +67,6 @@
   "text.autoconfig.portalcubed.option.enabled.enablePortal2Blocks": "Aktiviere Portalplatten",
   "text.autoconfig.portalcubed.option.enabled.enableHLB": "Aktiviere Festlichtbrücken",
 
-  "key.portalcubed.category" : "Denken Mit Portoffeln",
-  "key.portalcubed.grab" : "Greife"
+  "key.portalcubed.category": "Denken Mit Portoffeln",
+  "key.portalcubed.grab": "Greife"
 }

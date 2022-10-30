@@ -13,12 +13,13 @@ import java.util.UUID;
 @Mixin(World.class)
 public abstract class WorldMixin implements Accessors {
 
-    @Shadow
-    protected abstract EntityLookup<Entity> getEntityLookup();
+	@Shadow
+	protected abstract EntityLookup<Entity> getEntityLookup();
 
-    @Override
-    @Nullable
-    public Entity getEntity(UUID uuid) {
-        return this.getEntityLookup().get(uuid);
-    }
+	@Override
+	@Nullable
+	public Entity portalcubed$getEntity(UUID uuid) {
+		return this.getEntityLookup().get(uuid);
+	}
+
 }

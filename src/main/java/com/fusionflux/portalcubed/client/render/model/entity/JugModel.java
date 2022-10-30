@@ -5,7 +5,6 @@
 package com.fusionflux.portalcubed.client.render.model.entity;
 
 import com.fusionflux.portalcubed.PortalCubed;
-import com.fusionflux.portalcubed.entity.BeansEntity;
 import com.fusionflux.portalcubed.entity.JugEntity;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import net.minecraft.client.model.*;
@@ -28,7 +27,7 @@ public class JugModel extends EntityModel<JugEntity> {
 		ModelPartData modelPartData = modelData.getRoot();
 		ModelPartData bone = modelPartData.addChild("bb_main", ModelPartBuilder.create().uv(0, 0).cuboid(-3.0F, -1.75F, -3.0F, 6.0F, 8.0F, 6.0F, new Dilation(0.0F)), ModelTransform.of(0.0F, 17.75F, 0.0F, 0.0F, 3.1416F, 0.0F));
 
-		ModelPartData cube_r1 = bone.addChild("cube_r1", ModelPartBuilder.create().uv(0, 14).cuboid(-1.0F, -0.5F, -1.0F, 2.0F, 1.0F, 2.0F, new Dilation(0.0F)), ModelTransform.of(0.0F, -2.25F, 0.0F, 0.0F, -0.7854F, 0.0F));
+		bone.addChild("cube_r1", ModelPartBuilder.create().uv(0, 14).cuboid(-1.0F, -0.5F, -1.0F, 2.0F, 1.0F, 2.0F, new Dilation(0.0F)), ModelTransform.of(0.0F, -2.25F, 0.0F, 0.0F, -0.7854F, 0.0F));
 		return TexturedModelData.of(modelData, 32, 32);
 	}
 
@@ -41,5 +40,5 @@ public class JugModel extends EntityModel<JugEntity> {
 
 		bb_main.render(matrixStack, buffer, packedLight, packedOverlay);
 	}
-	
+
 }

@@ -7,54 +7,52 @@ import java.util.UUID;
 
 public interface EntityAttachments {
 
-    boolean isBounced();
+	boolean portalcubed$isBounced();
 
-    void setBounced(boolean bounced);
+	void portalcubed$setBounced(boolean bounced);
 
-    boolean isInFunnel();
+	boolean portalcubed$isInFunnel();
 
-    void setInFunnel(boolean inFunnel);
+	void portalcubed$setInFunnel(boolean inFunnel);
 
-    int getFunnelTimer();
+	int portalcubed$getFunnelTimer();
 
-    void setFunnelTimer(int funnelTimer);
+	void portalcubed$setFunnelTimer(int funnelTimer);
 
-    Direction getDirection();
+	Direction portalcubed$getDirection();
 
-    void setDirection(Direction direction);
+	void portalcubed$setDirection(Direction direction);
 
-    double getMaxFallSpeed();
+	double portalcubed$getMaxFallSpeed();
 
-    void setMaxFallSpeed(double maxFallSpeed);
+	void portalcubed$setMaxFallSpeed(double maxFallSpeed);
 
-    double getMaxFallHeight();
+	double portalcubed$getMaxFallHeight();
 
-    int getGelTimer();
+	int portalcubed$getGelTimer();
 
-    void setGelTimer(int funnelTimer);
+	void portalcubed$setGelTimer(int funnelTimer);
 
-    int getGelChangeTimer();
+	int portalcubed$getGelChangeTimer();
 
-    void setGelChangeTimer(int funnelTimer);
+	void portalcubed$setGelChangeTimer(int funnelTimer);
 
-    Vec3d getLastVel();
+	Vec3d portalcubed$getLastVel();
 
-    Vec3d getLastPos();
+	Vec3d portalcubed$getLastPos();
 
-    void setMaxFallHeight(double maxFallHeight);
+	void portalcubed$setMaxFallHeight(double maxFallHeight);
 
-    void setServerVel(Vec3d serverVel);
+	void portalcubed$setServerVel(Vec3d serverVel);
 
-    Vec3d getServerVel();
+	Vec3d portalcubed$getServerVel();
 
-    void setTeleportUUID(UUID serverVel);
+	void portalcubed$setTeleportUUID(UUID serverVel);
 
-    UUID getTeleportUUID();
+	UUID portalcubed$getTeleportUUID();
 
-    void setShouldTeleport(boolean shouldTeleport);
+	void portalcubed$setShouldTeleport(boolean shouldTeleport);
 
-    boolean getShouldTeleport();
-
-
+	boolean portalcubed$getShouldTeleport();
 
 }

@@ -9,18 +9,18 @@ import net.minecraft.client.render.entity.MobEntityRenderer;
 import net.minecraft.util.Identifier;
 
 public class Portal1CompanionCubeRenderer extends MobEntityRenderer<Portal1CompanionCubeEntity, Portal1CompanionCubeModel> {
-    private static final Identifier BASE_TEXTURE = new Identifier(PortalCubed.MODID, "textures/entity/portal_1_companion_cube.png");
-    protected final Portal1CompanionCubeModel model = new Portal1CompanionCubeModel(MinecraftClient.getInstance().getEntityModelLoader().getModelPart(Portal1CompanionCubeModel.COMPANION_CUBE_MAIN_LAYER));
+	private static final Identifier BASE_TEXTURE = new Identifier(PortalCubed.MODID, "textures/entity/portal_1_companion_cube.png");
+	protected final Portal1CompanionCubeModel model = new Portal1CompanionCubeModel(MinecraftClient.getInstance().getEntityModelLoader().getModelPart(Portal1CompanionCubeModel.COMPANION_CUBE_MAIN_LAYER));
 
-    public Portal1CompanionCubeRenderer(EntityRendererFactory.Context context) {
-        super(context, new Portal1CompanionCubeModel(MinecraftClient.getInstance().getEntityModelLoader().getModelPart(Portal1CompanionCubeModel.COMPANION_CUBE_MAIN_LAYER)), 0.5f);
-    }
-
-
+	public Portal1CompanionCubeRenderer(EntityRendererFactory.Context context) {
+		super(context, new Portal1CompanionCubeModel(MinecraftClient.getInstance().getEntityModelLoader().getModelPart(Portal1CompanionCubeModel.COMPANION_CUBE_MAIN_LAYER)), 0.5f);
+	}
 
 
-    @Override
-    public Identifier getTexture(Portal1CompanionCubeEntity entity) {
-        return BASE_TEXTURE;
-    }
+
+
+	@Override
+	public Identifier getTexture(Portal1CompanionCubeEntity entity) {
+		return BASE_TEXTURE;
+	}
 }

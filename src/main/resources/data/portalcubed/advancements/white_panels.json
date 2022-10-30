@@ -2,7 +2,6 @@
   "parent": "minecraft:recipes/root",
   "rewards": {
     "recipes": [
-
       "portalcubed:white_2x2_panel_bottom_left_crafting",
       "portalcubed:white_2x2_panel_bottom_right_crafting",
       "portalcubed:white_2x2_panel_top_left_crafting",
@@ -13,7 +12,6 @@
       "portalcubed:white_panel_crafting_from_end_stone",
       "portalcubed:white_checkered_panel_crafting",
       "portalcubed:white_half_panel_crafting"
-
     ]
   },
   "criteria": {
@@ -23,10 +21,10 @@
         "items": [
           {
             "items": [
-"minecraft:diorite",
-"minecraft:calcite",
-"minecraft:end_stone"
-]
+              "minecraft:diorite",
+              "minecraft:calcite",
+              "minecraft:end_stone"
+            ]
           }
         ]
       }

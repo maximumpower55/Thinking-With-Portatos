@@ -1,7 +1,4 @@
 {
   "replace": false,
-  "values" : [
-    "minecraft:moss_block",
-    "minecraft:vine"
-  ]
+  "values": ["minecraft:moss_block", "minecraft:vine"]
 }

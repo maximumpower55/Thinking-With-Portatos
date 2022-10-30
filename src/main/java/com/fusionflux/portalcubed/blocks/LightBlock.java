@@ -11,15 +11,15 @@ import net.minecraft.world.BlockView;
 
 public class LightBlock extends Block {
 
-    public LightBlock(Settings settings) {
-        super(settings);
-    }
+	public LightBlock(Settings settings) {
+		super(settings);
+	}
 
-    public BlockRenderType getRenderType(BlockState state) {
-        return BlockRenderType.INVISIBLE;
-    }
+	public BlockRenderType getRenderType(BlockState state) {
+		return BlockRenderType.INVISIBLE;
+	}
 
-    public VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
-        return VoxelShapes.empty();
-    }
+	public VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
+		return VoxelShapes.empty();
+	}
 }

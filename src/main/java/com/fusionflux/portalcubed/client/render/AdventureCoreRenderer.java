@@ -9,18 +9,18 @@ import net.minecraft.client.render.entity.MobEntityRenderer;
 import net.minecraft.util.Identifier;
 
 public class AdventureCoreRenderer extends MobEntityRenderer<AdventureCoreEntity, AdventureCoreModel> {
-    private static final Identifier BASE_TEXTURE = new Identifier(PortalCubed.MODID, "textures/entity/portal_2_cores.png");
-    protected final AdventureCoreModel model = new AdventureCoreModel(MinecraftClient.getInstance().getEntityModelLoader().getModelPart(AdventureCoreModel.ADVENTURE_CORE_LAYER));
+	private static final Identifier BASE_TEXTURE = new Identifier(PortalCubed.MODID, "textures/entity/portal_2_cores.png");
+	protected final AdventureCoreModel model = new AdventureCoreModel(MinecraftClient.getInstance().getEntityModelLoader().getModelPart(AdventureCoreModel.ADVENTURE_CORE_LAYER));
 
-    public AdventureCoreRenderer(EntityRendererFactory.Context context) {
-        super(context, new AdventureCoreModel(MinecraftClient.getInstance().getEntityModelLoader().getModelPart(AdventureCoreModel.ADVENTURE_CORE_LAYER)), 0.5f);
-    }
-
-
+	public AdventureCoreRenderer(EntityRendererFactory.Context context) {
+		super(context, new AdventureCoreModel(MinecraftClient.getInstance().getEntityModelLoader().getModelPart(AdventureCoreModel.ADVENTURE_CORE_LAYER)), 0.5f);
+	}
 
 
-    @Override
-    public Identifier getTexture(AdventureCoreEntity entity) {
-        return BASE_TEXTURE;
-    }
+
+
+	@Override
+	public Identifier getTexture(AdventureCoreEntity entity) {
+		return BASE_TEXTURE;
+	}
 }

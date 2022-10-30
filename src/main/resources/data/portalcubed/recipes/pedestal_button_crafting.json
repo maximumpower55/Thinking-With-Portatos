@@ -1,20 +1,16 @@
 {
-    "type": "minecraft:crafting_shaped",
-    "pattern": [
-        "Y",
-        "X",
-        "X"
-    ],
-    "key": {
-        "X": {
-            "item": "minecraft:iron_nugget"
-        },
-        "Y": {
-            "tag": "minecraft:wooden_buttons"
-        }
+  "type": "minecraft:crafting_shaped",
+  "pattern": ["Y", "X", "X"],
+  "key": {
+    "X": {
+      "item": "minecraft:iron_nugget"
     },
-    "result": {
-        "item": "portalcubed:pedestal_button",
-        "count": 1
+    "Y": {
+      "tag": "minecraft:wooden_buttons"
     }
+  },
+  "result": {
+    "item": "portalcubed:pedestal_button",
+    "count": 1
+  }
 }

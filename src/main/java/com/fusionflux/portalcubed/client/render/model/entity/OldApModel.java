@@ -6,7 +6,6 @@ package com.fusionflux.portalcubed.client.render.model.entity;
 
 import com.fusionflux.portalcubed.PortalCubed;
 import com.fusionflux.portalcubed.entity.OldApCubeEntity;
-import com.fusionflux.portalcubed.entity.RadioEntity;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import net.minecraft.client.model.*;
 import net.minecraft.client.render.entity.model.EntityModel;
@@ -26,7 +25,7 @@ public class OldApModel extends EntityModel<OldApCubeEntity> {
 	public static TexturedModelData getTexturedModelData() {
 		ModelData modelData = new ModelData();
 		ModelPartData modelPartData = modelData.getRoot();
-		ModelPartData bone = modelPartData.addChild("bone", ModelPartBuilder.create().uv(0, 0).cuboid(-5.5F, -10.0F, -5.0F, 10.0F, 10.0F, 10.0F, new Dilation(0.0F))
+		modelPartData.addChild("bone", ModelPartBuilder.create().uv(0, 0).cuboid(-5.5F, -10.0F, -5.0F, 10.0F, 10.0F, 10.0F, new Dilation(0.0F))
 				.uv(0, 20).cuboid(-5.5F, -10.0F, -5.0F, 10.0F, 10.0F, 10.0F, new Dilation(0.3F)), ModelTransform.pivot(0.5F, 24.0F, 0.0F));
 		return TexturedModelData.of(modelData, 64, 64);
 	}
@@ -40,5 +39,5 @@ public class OldApModel extends EntityModel<OldApCubeEntity> {
 
 		bb_main.render(matrixStack, buffer, packedLight, packedOverlay);
 	}
-	
+
 }

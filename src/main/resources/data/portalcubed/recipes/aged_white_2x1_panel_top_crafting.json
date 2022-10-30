@@ -1,16 +1,13 @@
 {
-    "type": "minecraft:crafting_shaped",
-    "pattern": [
-        "XXX",
-        "X X"
-    ],
-    "key": {
-        "X": {
-            "item": "portalcubed:aged_white_panel"
-        }
-    },
-    "result": {
-        "item": "portalcubed:aged_white_2x1_panel_top",
-        "count": 5
+  "type": "minecraft:crafting_shaped",
+  "pattern": ["XXX", "X X"],
+  "key": {
+    "X": {
+      "item": "portalcubed:aged_white_panel"
     }
+  },
+  "result": {
+    "item": "portalcubed:aged_white_2x1_panel_top",
+    "count": 5
+  }
 }

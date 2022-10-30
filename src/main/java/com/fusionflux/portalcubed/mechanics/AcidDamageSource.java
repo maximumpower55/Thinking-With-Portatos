@@ -6,10 +6,10 @@ import net.minecraft.entity.damage.DamageSource;
 
 public class AcidDamageSource extends DamageSource {
 
-    public static final DamageSource INSTANCE = new AcidDamageSource().setBypassesArmor();
+	public static final DamageSource INSTANCE = new AcidDamageSource().setBypassesArmor();
 
-    public AcidDamageSource() {
-        super(PortalCubed.MODID + ".acid");
-    }
+	public AcidDamageSource() {
+		super(PortalCubed.MODID + ".acid");
+	}
 
 }

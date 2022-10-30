@@ -1,19 +1,16 @@
 {
-    "type": "minecraft:crafting_shaped",
-    "pattern": [
-        "YX",
-        "XY"
-    ],
-    "key": {
-        "X": {
-            "item": "minecraft:basalt"
-        },
-        "Y": {
-            "item": "minecraft:deepslate"
-        }
+  "type": "minecraft:crafting_shaped",
+  "pattern": ["YX", "XY"],
+  "key": {
+    "X": {
+      "item": "minecraft:basalt"
     },
-    "result": {
-        "item": "portalcubed:padded_gray_panel",
-        "count": 16
+    "Y": {
+      "item": "minecraft:deepslate"
     }
+  },
+  "result": {
+    "item": "portalcubed:padded_gray_panel",
+    "count": 16
+  }
 }

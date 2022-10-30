@@ -2,7 +2,6 @@
   "parent": "minecraft:recipes/root",
   "rewards": {
     "recipes": [
-
       "portalcubed:2x2_double_crossbar_bottom_left_crafting",
       "portalcubed:2x2_double_crossbar_bottom_right_crafting",
       "portalcubed:2x2_double_crossbar_top_left_crafting",
@@ -17,10 +16,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-"minecraft:scaffolding",
-"minecraft:iron_nugget"
-]
+            "items": ["minecraft:scaffolding", "minecraft:iron_nugget"]
           }
         ]
       }

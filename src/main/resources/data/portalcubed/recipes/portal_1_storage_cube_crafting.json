@@ -1,20 +1,16 @@
 {
-    "type": "minecraft:crafting_shaped",
-    "pattern": [
-        "YYY",
-        "YXY",
-        "YYY"
-    ],
-    "key": {
-        "Y": {
-            "item": "minecraft:iron_nugget"
-        },
-        "X": {
-            "item": "minecraft:gray_dye"
-        }
+  "type": "minecraft:crafting_shaped",
+  "pattern": ["YYY", "YXY", "YYY"],
+  "key": {
+    "Y": {
+      "item": "minecraft:iron_nugget"
     },
-    "result": {
-        "item": "portalcubed:portal_1_storage_cube",
-        "count": 1
+    "X": {
+      "item": "minecraft:gray_dye"
     }
+  },
+  "result": {
+    "item": "portalcubed:portal_1_storage_cube",
+    "count": 1
+  }
 }

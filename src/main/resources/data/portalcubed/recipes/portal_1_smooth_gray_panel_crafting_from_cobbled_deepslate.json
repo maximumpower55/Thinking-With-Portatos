@@ -1,19 +1,16 @@
 {
-    "type": "minecraft:crafting_shaped",
-    "pattern": [
-        "YX",
-        "XY"
-    ],
-    "key": {
-        "X": {
-            "item": "minecraft:copper_ingot"
-        },
-        "Y": {
-            "item": "minecraft:cobbled_deepslate"
-        }
+  "type": "minecraft:crafting_shaped",
+  "pattern": ["YX", "XY"],
+  "key": {
+    "X": {
+      "item": "minecraft:copper_ingot"
     },
-    "result": {
-        "item": "portalcubed:portal_1_smooth_gray_panel",
-        "count": 16
+    "Y": {
+      "item": "minecraft:cobbled_deepslate"
     }
+  },
+  "result": {
+    "item": "portalcubed:portal_1_smooth_gray_panel",
+    "count": 16
+  }
 }

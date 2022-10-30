@@ -1,131 +1,87 @@
 {
-	"gelrun": {
-		"subtitle": "subtitles.portalcubed.gelrun",
-		"sounds": [
-			"portalcubed:gelrun"
-		]
-	},
-	"gelbounce": {
-		"subtitle": "subtitles.portalcubed.gelbounce",
-		"sounds": [
-			"portalcubed:gelbounce",
-			"portalcubed:gelbounce2",
-			"portalcubed:gelbounce3"
-		]
-	},
-	"portalgunprimary": {
-		"subtitle": "subtitles.portalcubed.portalgunprimaryfire",
-		"sounds": [
-			"portalcubed:portalgunprimary"
-		]
-	},
-	"portalgunsecondary": {
-		"subtitle": "subtitles.portalcubed.portalgunsecondaryfire",
-		"sounds": [
-			"portalcubed:portalgunsecondary"
-		]
-	},
-	"portalenter": {
-		"subtitle": "subtitles.portalcubed.portalenter",
-		"sounds": [
-			"portalcubed:portalenter1",
-			"portalcubed:portalenter2"
-		]
-	},
-	"portalexit": {
-		"subtitle": "subtitles.portalcubed.portalexit",
-		"sounds": [
-			"portalcubed:portalexit1",
-			"portalcubed:portalexit2"
-		]
-	},
-	"portal_open": {
-		"subtitle": "subtitles.portalcubed.portal_open",
-		"sounds": [
-			"portalcubed:portal_open1",
-			"portalcubed:portal_open2",
-			"portalcubed:portal_open3"
-		]
-	},
-	"portal_close": {
-		"subtitle": "subtitles.portalcubed.portal_close",
-		"sounds": [
-			"portalcubed:portal_close2"
-		]
-	},
-	"portal_invalid_surface": {
-		"subtitle": "subtitles.portalcubed.portal_invalid_surface",
-		"sounds": [
-			"portalcubed:portal_invalid_surface"
-		]
-	},
-	"portalambiance": {
-		"sounds": [
-			"portalcubed:portal_ambient_loop"
-		]
-	},
-	"cubehithigh": {
-		"sounds": [
-			"portalcubed:cube_hit_hard1",
-			"portalcubed:cube_hit_hard2"
-		]
-	},
-	"cubehitlow": {
-		"sounds": [
-			"portalcubed:cube_hit_soft1",
-			"portalcubed:cube_hit_soft2"
-		]
-	},
-	"cubescrape": {
-		"sounds": [
-			"portalcubed:cube_scrape"
-		]
-	},
-	"companioncubeambiance": {
-		"sounds": [
-			"portalcubed:companioncubeambiance"
-		]
-	},
-	"radio": {
-		"sounds": [
-			"portalcubed:radio"
-		]
-	},
-	"exile_vilify": {
-		"sounds": [
-			"portalcubed:exile_vilify"
-		]
-	},
-	"curiosity_core": {
-		"sounds": [
-			"portalcubed:curiosity"
-		]
-	},
-	"anger_core": {
-		"sounds": [
-			"portalcubed:anger"
-		]
-	},
+  "gelrun": {
+    "subtitle": "subtitles.portalcubed.gelrun",
+    "sounds": ["portalcubed:gelrun"]
+  },
+  "gelbounce": {
+    "subtitle": "subtitles.portalcubed.gelbounce",
+    "sounds": [
+      "portalcubed:gelbounce",
+      "portalcubed:gelbounce2",
+      "portalcubed:gelbounce3"
+    ]
+  },
+  "portalgunprimary": {
+    "subtitle": "subtitles.portalcubed.portalgunprimaryfire",
+    "sounds": ["portalcubed:portalgunprimary"]
+  },
+  "portalgunsecondary": {
+    "subtitle": "subtitles.portalcubed.portalgunsecondaryfire",
+    "sounds": ["portalcubed:portalgunsecondary"]
+  },
+  "portalenter": {
+    "subtitle": "subtitles.portalcubed.portalenter",
+    "sounds": ["portalcubed:portalenter1", "portalcubed:portalenter2"]
+  },
+  "portalexit": {
+    "subtitle": "subtitles.portalcubed.portalexit",
+    "sounds": ["portalcubed:portalexit1", "portalcubed:portalexit2"]
+  },
+  "portal_open": {
+    "subtitle": "subtitles.portalcubed.portal_open",
+    "sounds": [
+      "portalcubed:portal_open1",
+      "portalcubed:portal_open2",
+      "portalcubed:portal_open3"
+    ]
+  },
+  "portal_close": {
+    "subtitle": "subtitles.portalcubed.portal_close",
+    "sounds": ["portalcubed:portal_close2"]
+  },
+  "portal_invalid_surface": {
+    "subtitle": "subtitles.portalcubed.portal_invalid_surface",
+    "sounds": ["portalcubed:portal_invalid_surface"]
+  },
+  "portalambiance": {
+    "sounds": ["portalcubed:portal_ambient_loop"]
+  },
+  "cubehithigh": {
+    "sounds": ["portalcubed:cube_hit_hard1", "portalcubed:cube_hit_hard2"]
+  },
+  "cubehitlow": {
+    "sounds": ["portalcubed:cube_hit_soft1", "portalcubed:cube_hit_soft2"]
+  },
+  "cubescrape": {
+    "sounds": ["portalcubed:cube_scrape"]
+  },
+  "companioncubeambiance": {
+    "sounds": ["portalcubed:companioncubeambiance"]
+  },
+  "radio": {
+    "sounds": ["portalcubed:radio"]
+  },
+  "exile_vilify": {
+    "sounds": ["portalcubed:exile_vilify"]
+  },
+  "curiosity_core": {
+    "sounds": ["portalcubed:curiosity"]
+  },
+  "anger_core": {
+    "sounds": ["portalcubed:anger"]
+  },
 
-	"cake_core": {
-		"sounds": [
-			"portalcubed:cakemix"
-		]
-	},
-	"space_core": {
-		"sounds": [
-			"portalcubed:space_core"
-		]
-	},
+  "cake_core": {
+    "sounds": ["portalcubed:cakemix"]
+  },
+  "space_core": {
+    "sounds": ["portalcubed:space_core"]
+  },
 
-	"adventure_core": {
-		"sounds": [
-			"portalcubed:adventure_core"
-		]
-	},
-	"fact_core": {
-		"sounds": [
-			"portalcubed:fact_core"
-		]
-	}
+  "adventure_core": {
+    "sounds": ["portalcubed:adventure_core"]
+  },
+  "fact_core": {
+    "sounds": ["portalcubed:fact_core"]
+  }
 }

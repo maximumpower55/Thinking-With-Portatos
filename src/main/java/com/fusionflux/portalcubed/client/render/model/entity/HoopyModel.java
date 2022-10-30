@@ -25,7 +25,7 @@ public class HoopyModel extends EntityModel<HoopyEntity> {
 	public static TexturedModelData getTexturedModelData() {
 		ModelData modelData = new ModelData();
 		ModelPartData modelPartData = modelData.getRoot();
-		ModelPartData bb_main = modelPartData.addChild("bb_main", ModelPartBuilder.create().uv(0, 0).cuboid(-13.0F, -1.0F, -13.0F, 26.0F, 1.0F, 26.0F, new Dilation(0.0F))
+		modelPartData.addChild("bb_main", ModelPartBuilder.create().uv(0, 0).cuboid(-13.0F, -1.0F, -13.0F, 26.0F, 1.0F, 26.0F, new Dilation(0.0F))
 				.uv(0, 27).cuboid(-12.0F, -1.0F, -12.0F, 24.0F, 1.0F, 24.0F, new Dilation(0.0F)), ModelTransform.pivot(0.0F, 24.0F, 0.0F));
 		return TexturedModelData.of(modelData, 128, 128);
 	}
@@ -39,5 +39,5 @@ public class HoopyModel extends EntityModel<HoopyEntity> {
 
 		bb_main.render(matrixStack, buffer, packedLight, packedOverlay);
 	}
-	
+
 }

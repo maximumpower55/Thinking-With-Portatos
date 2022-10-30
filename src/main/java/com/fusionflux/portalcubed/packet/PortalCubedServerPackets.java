@@ -20,59 +20,59 @@ import org.quiltmc.qsl.networking.api.PacketSender;
 import org.quiltmc.qsl.networking.api.ServerPlayNetworking;
 
 public class PortalCubedServerPackets {
-    public static final Identifier PORTAL_LEFT_CLICK = new Identifier(PortalCubed.MODID, "portal_left_click");
-    public static final Identifier GRAB_KEY_PRESSED = new Identifier(PortalCubed.MODID, "grab_key_pressed");
+	public static final Identifier PORTAL_LEFT_CLICK = new Identifier(PortalCubed.MODID, "portal_left_click");
+	public static final Identifier GRAB_KEY_PRESSED = new Identifier(PortalCubed.MODID, "grab_key_pressed");
 
-    public static void onPortalLeftClick(MinecraftServer server, ServerPlayerEntity player, ServerPlayNetworkHandler handler, PacketByteBuf buf, PacketSender sender) {
-        ServerWorld serverWorld = player.getWorld();
-        Hand hand = buf.readEnumConstant(Hand.class);
-        ItemStack itemStack = player.getStackInHand(hand);
-        player.updateLastActionTime();
+	public static void onPortalLeftClick(MinecraftServer server, ServerPlayerEntity player, ServerPlayNetworkHandler handler, PacketByteBuf buf, PacketSender sender) {
+		ServerWorld serverWorld = player.getWorld();
+		Hand hand = buf.readEnumConstant(Hand.class);
+		ItemStack itemStack = player.getStackInHand(hand);
+		player.updateLastActionTime();
 
-        if (!itemStack.isEmpty() && itemStack.getItem() instanceof PortalGun) {
-            server.execute(() -> ((PortalGun) itemStack.getItem()).useLeft(serverWorld, player, hand));
-        }
-    }
+		if (!itemStack.isEmpty() && itemStack.getItem() instanceof PortalGun) {
+			server.execute(() -> ((PortalGun) itemStack.getItem()).useLeft(serverWorld, player, hand));
+		}
+	}
 
-    public static void onGrabKeyPressed(MinecraftServer server, ServerPlayerEntity player, ServerPlayNetworkHandler handler, PacketByteBuf buf, PacketSender sender) {
+	public static void onGrabKeyPressed(MinecraftServer server, ServerPlayerEntity player, ServerPlayNetworkHandler handler, PacketByteBuf buf, PacketSender sender) {
 
-        Vec3d vec3d = player.getCameraPosVec(0);
-        double d = 5;
+		Vec3d vec3d = player.getCameraPosVec(0);
+		double d = 5;
 
-        Vec3d vec3d2 = player.getRotationVec(1.0F);
-        Vec3d vec3d3 = vec3d.add(vec3d2.x * d, vec3d2.y * d, vec3d2.z * d);
-        float f = 1.0F;
-        Box box = player.getBoundingBox().stretch(vec3d2.multiply(d)).expand(1.0D, 1.0D, 1.0D);
-        EntityHitResult entityHitResult = ProjectileUtil.raycast(player, vec3d, vec3d3, box, (entityx) -> !entityx.isSpectator() && entityx.collides(), d);
+		Vec3d vec3d2 = player.getRotationVec(1.0F);
+		Vec3d vec3d3 = vec3d.add(vec3d2.x * d, vec3d2.y * d, vec3d2.z * d);
 
-        server.execute(() -> {
-            if (entityHitResult != null) {
-                if (entityHitResult.getEntity() instanceof CorePhysicsEntity entity) {
-                    if (CalledValues.getCubeUUID(player)==null) {
-                        entity.setHolderUUID(player.getUuid());
-                        CalledValues.setCubeUUID(player,entity.getUuid());
-                    } else {
-                        CorePhysicsEntity playercube = (CorePhysicsEntity) ((ServerWorld) player.world).getEntity(CalledValues.getCubeUUID(player));
-                        if (playercube != null) {
-                            playercube.setHolderUUID(null);
-                        }
-                        CalledValues.setCubeUUID(player,null);
-                    }
-                } else {
-                    entityHitResult.getEntity();
-                }
-            } else {
-                CorePhysicsEntity playercube = (CorePhysicsEntity) ((ServerWorld) player.world).getEntity(CalledValues.getCubeUUID(player));
-                if (playercube != null) {
-                    playercube.setHolderUUID(null);
-                }
-                CalledValues.setCubeUUID(player,null);
-            }
-        });
-    }
+		Box box = player.getBoundingBox().stretch(vec3d2.multiply(d)).expand(1.0D, 1.0D, 1.0D);
+		EntityHitResult entityHitResult = ProjectileUtil.raycast(player, vec3d, vec3d3, box, (entityx) -> !entityx.isSpectator() && entityx.collides(), d);
 
-    public static void registerPackets() {
-        ServerPlayNetworking.registerGlobalReceiver(PORTAL_LEFT_CLICK, PortalCubedServerPackets::onPortalLeftClick);
-        ServerPlayNetworking.registerGlobalReceiver(GRAB_KEY_PRESSED, PortalCubedServerPackets::onGrabKeyPressed);
-    }
+		server.execute(() -> {
+			if (entityHitResult != null) {
+				if (entityHitResult.getEntity() instanceof CorePhysicsEntity entity) {
+					if (CalledValues.getCubeUUID(player)==null) {
+						entity.setHolderUUID(player.getUuid());
+						CalledValues.setCubeUUID(player,entity.getUuid());
+					} else {
+						CorePhysicsEntity playercube = (CorePhysicsEntity) ((ServerWorld) player.world).getEntity(CalledValues.getCubeUUID(player));
+						if (playercube != null) {
+							playercube.setHolderUUID(null);
+						}
+						CalledValues.setCubeUUID(player,null);
+					}
+				} else {
+					entityHitResult.getEntity();
+				}
+			} else {
+				CorePhysicsEntity playercube = (CorePhysicsEntity) ((ServerWorld) player.world).getEntity(CalledValues.getCubeUUID(player));
+				if (playercube != null) {
+					playercube.setHolderUUID(null);
+				}
+				CalledValues.setCubeUUID(player,null);
+			}
+		});
+	}
+
+	public static void registerPackets() {
+		ServerPlayNetworking.registerGlobalReceiver(PORTAL_LEFT_CLICK, PortalCubedServerPackets::onPortalLeftClick);
+		ServerPlayNetworking.registerGlobalReceiver(GRAB_KEY_PRESSED, PortalCubedServerPackets::onGrabKeyPressed);
+	}
 }

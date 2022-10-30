@@ -13,14 +13,16 @@ import net.minecraft.world.BlockView;
 
 @Mixin(Camera.class)
 public abstract class CameraMixin implements CameraExt {
-    @Shadow
-    private BlockView area;
-    @Shadow
-    @Final
-    private BlockPos.Mutable blockPos;
 
-    @Override
-    public FluidState portalcubed$getSubmergedFluidState() {
-        return this.area.getFluidState(blockPos);
-    }
+	@Shadow
+	private BlockView area;
+	@Shadow
+	@Final
+	private BlockPos.Mutable blockPos;
+
+	@Override
+	public FluidState portalcubed$getSubmergedFluidState() {
+		return this.area.getFluidState(blockPos);
+	}
+
 }

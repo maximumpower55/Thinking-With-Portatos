@@ -1,20 +1,16 @@
 {
-    "type": "minecraft:crafting_shaped",
-    "pattern": [
-        " XY",
-        "XYX",
-        "YX "
-    ],
-    "key": {
-        "Y": {
-            "item": "minecraft:iron_nugget"
-        },
-        "X": {
-            "item": "minecraft:scaffolding"
-        }
+  "type": "minecraft:crafting_shaped",
+  "pattern": [" XY", "XYX", "YX "],
+  "key": {
+    "Y": {
+      "item": "minecraft:iron_nugget"
     },
-    "result": {
-        "item": "portalcubed:1x1_single_crossbar",
-        "count": 8
+    "X": {
+      "item": "minecraft:scaffolding"
     }
+  },
+  "result": {
+    "item": "portalcubed:1x1_single_crossbar",
+    "count": 8
+  }
 }

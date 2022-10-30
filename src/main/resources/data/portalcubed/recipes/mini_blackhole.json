@@ -1,10 +1,6 @@
 {
   "type": "minecraft:crafting_shaped",
-  "pattern": [
-    "#E#",
-    "ENE",
-    "#E#"
-  ],
+  "pattern": ["#E#", "ENE", "#E#"],
   "key": {
     "#": {
       "item": "minecraft:obsidian"

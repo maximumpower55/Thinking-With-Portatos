@@ -18,38 +18,38 @@ import java.util.UUID;
 
 
 public class PortalCubedClientPackets {
-    public static final Identifier SPAWN_PACKET = new Identifier(PortalCubed.MODID, "spawn_packet");
-    @Environment(EnvType.CLIENT)
-    public static void registerPackets() {
-        ClientPlayNetworking.registerGlobalReceiver(SPAWN_PACKET, PortalCubedClientPackets::onEntitySpawn);
-    }
+	public static final Identifier SPAWN_PACKET = new Identifier(PortalCubed.MODID, "spawn_packet");
+	@Environment(EnvType.CLIENT)
+	public static void registerPackets() {
+		ClientPlayNetworking.registerGlobalReceiver(SPAWN_PACKET, PortalCubedClientPackets::onEntitySpawn);
+	}
 
 
-    @Environment(EnvType.CLIENT)
-    public static void onEntitySpawn(MinecraftClient client, ClientPlayNetworkHandler handler, PacketByteBuf buf, PacketSender sender) {
-        EntityType<?> type = Registry.ENTITY_TYPE.get(buf.readVarInt());
-        UUID entityUUID = buf.readUuid();
-        int entityID = buf.readVarInt();
-        double x = buf.readDouble();
-        double y = buf.readDouble();
-        double z = buf.readDouble();
-        float pitch = (buf.readByte() * 360) / 256.0F;
-        float yaw = (buf.readByte() * 360) / 256.0F;
-        ClientWorld world = MinecraftClient.getInstance().world;
-        Entity entity = type.create(world);
-        client.execute(() -> {
-            if (entity != null) {
-                entity.updatePosition(x, y, z);
-                entity.syncPacketPositionCodec(x, y, z);
-                entity.setPitch(pitch);
-                entity.setYaw(yaw);
-                entity.setId(entityID);
-                entity.setUuid(entityUUID);
-                assert world != null;
-                if(world != null)
-                world.addEntity(entityID, entity);
-            }
-        });
-    }
+	@Environment(EnvType.CLIENT)
+	public static void onEntitySpawn(MinecraftClient client, ClientPlayNetworkHandler handler, PacketByteBuf buf, PacketSender sender) {
+		EntityType<?> type = Registry.ENTITY_TYPE.get(buf.readVarInt());
+		UUID entityUUID = buf.readUuid();
+		int entityID = buf.readVarInt();
+		double x = buf.readDouble();
+		double y = buf.readDouble();
+		double z = buf.readDouble();
+		float pitch = (buf.readByte() * 360) / 256.0F;
+		float yaw = (buf.readByte() * 360) / 256.0F;
+		ClientWorld world = client.world;
+		Entity entity = type.create(world);
+		client.execute(() -> {
+			if (entity != null) {
+				entity.updatePosition(x, y, z);
+				entity.syncPacketPositionCodec(x, y, z);
+				entity.setPitch(pitch);
+				entity.setYaw(yaw);
+				entity.setId(entityID);
+				entity.setUuid(entityUUID);
+				assert world != null;
+				if(world != null)
+				world.addEntity(entityID, entity);
+			}
+		});
+	}
 
 }

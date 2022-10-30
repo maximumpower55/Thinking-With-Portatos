@@ -1,19 +1,16 @@
 {
-    "type": "minecraft:crafting_shaped",
-    "pattern": [
-        "YX",
-        "XY"
-    ],
-    "key": {
-        "X": {
-            "item": "minecraft:copper_ingot"
-        },
-        "Y": {
-            "item": "minecraft:green_dye"
-        }
+  "type": "minecraft:crafting_shaped",
+  "pattern": ["YX", "XY"],
+  "key": {
+    "X": {
+      "item": "minecraft:copper_ingot"
     },
-    "result": {
-        "item": "portalcubed:old_ap_green_panel",
-        "count": 16
+    "Y": {
+      "item": "minecraft:green_dye"
     }
+  },
+  "result": {
+    "item": "portalcubed:old_ap_green_panel",
+    "count": 16
+  }
 }

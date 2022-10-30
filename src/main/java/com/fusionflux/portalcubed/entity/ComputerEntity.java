@@ -9,33 +9,33 @@ import net.minecraft.world.GameRules;
 import net.minecraft.world.World;
 
 public class ComputerEntity extends CorePhysicsEntity  {
-    public ComputerEntity(EntityType<? extends PathAwareEntity> type, World world) {
-        super(type, world);
-    }
+	public ComputerEntity(EntityType<? extends PathAwareEntity> type, World world) {
+		super(type, world);
+	}
 
 
-    @Override
-    public boolean damage(DamageSource source, float amount) {
-        if (!this.world.isClient && !this.isRemoved()) {
-            boolean bl = source.getAttacker() instanceof PlayerEntity && ((PlayerEntity) source.getAttacker()).getAbilities().creativeMode;
-            if (source.getAttacker() instanceof PlayerEntity || source == DamageSource.OUT_OF_WORLD) {
-                if(source.getAttacker() instanceof PlayerEntity && ((PlayerEntity) source.getAttacker()).getAbilities().allowModifyWorld){
-                    if (this.world.getGameRules().getBoolean(GameRules.DO_ENTITY_DROPS) && !bl) {
-                        this.dropItem(PortalCubedItems.COMPUTER);
-                    }
-                    this.discard();
-                }
-                if(!(source.getAttacker() instanceof PlayerEntity)) {
-                    if (this.world.getGameRules().getBoolean(GameRules.DO_ENTITY_DROPS) && !bl) {
-                        this.dropItem(PortalCubedItems.COMPUTER);
-                    }
-                    this.discard();
-                }
-            }
+	@Override
+	public boolean damage(DamageSource source, float amount) {
+		if (!this.world.isClient && !this.isRemoved()) {
+			boolean bl = source.getAttacker() instanceof PlayerEntity && ((PlayerEntity) source.getAttacker()).getAbilities().creativeMode;
+			if (source.getAttacker() instanceof PlayerEntity || source == DamageSource.OUT_OF_WORLD) {
+				if(source.getAttacker() instanceof PlayerEntity && ((PlayerEntity) source.getAttacker()).getAbilities().allowModifyWorld){
+					if (this.world.getGameRules().getBoolean(GameRules.DO_ENTITY_DROPS) && !bl) {
+						this.dropItem(PortalCubedItems.COMPUTER);
+					}
+					this.discard();
+				}
+				if(!(source.getAttacker() instanceof PlayerEntity)) {
+					if (this.world.getGameRules().getBoolean(GameRules.DO_ENTITY_DROPS) && !bl) {
+						this.dropItem(PortalCubedItems.COMPUTER);
+					}
+					this.discard();
+				}
+			}
 
-        }
-        return false;
-    }
+		}
+		return false;
+	}
 
 
 }

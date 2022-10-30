@@ -5,7 +5,6 @@
 package com.fusionflux.portalcubed.client.render.model.entity;
 
 import com.fusionflux.portalcubed.PortalCubed;
-import com.fusionflux.portalcubed.entity.CompanionCubeEntity;
 import com.fusionflux.portalcubed.entity.RadioEntity;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import net.minecraft.client.model.*;
@@ -29,9 +28,9 @@ public class RadioModel extends EntityModel<RadioEntity> {
 		ModelPartData bone = modelPartData.addChild("bb_main", ModelPartBuilder.create().uv(0, 4).mirrored().cuboid(-12.0F, -1.0F, 6.0F, 8.0F, 1.0F, 4.0F, new Dilation(0.0F)).mirrored(false)
 				.uv(0, 13).mirrored().cuboid(-11.5F, -5.0F, 6.5F, 7.0F, 4.0F, 3.0F, new Dilation(0.0F)).mirrored(false), ModelTransform.pivot(8.0F, 24.0F, -8.0F));
 
-		ModelPartData cube_r1 = bone.addChild("cube_r1", ModelPartBuilder.create().uv(0, 0).cuboid(0.0F, -2.0F, -0.5F, 0.0F, 4.0F, 1.0F, new Dilation(0.0F)), ModelTransform.of(-6.5F, -7.0F, 8.0F, 0.0F, 0.7854F, 0.0F));
+		bone.addChild("cube_r1", ModelPartBuilder.create().uv(0, 0).cuboid(0.0F, -2.0F, -0.5F, 0.0F, 4.0F, 1.0F, new Dilation(0.0F)), ModelTransform.of(-6.5F, -7.0F, 8.0F, 0.0F, 0.7854F, 0.0F));
 
-		ModelPartData cube_r2 = bone.addChild("cube_r2", ModelPartBuilder.create().uv(0, 0).cuboid(0.0F, -2.0F, -0.5F, 0.0F, 4.0F, 1.0F, new Dilation(0.0F)), ModelTransform.of(-6.5F, -7.0F, 8.0F, 0.0F, -0.7854F, 0.0F));
+		bone.addChild("cube_r2", ModelPartBuilder.create().uv(0, 0).cuboid(0.0F, -2.0F, -0.5F, 0.0F, 4.0F, 1.0F, new Dilation(0.0F)), ModelTransform.of(-6.5F, -7.0F, 8.0F, 0.0F, -0.7854F, 0.0F));
 		return TexturedModelData.of(modelData, 32, 32);
 	}
 
@@ -44,5 +43,5 @@ public class RadioModel extends EntityModel<RadioEntity> {
 
 		bb_main.render(matrixStack, buffer, packedLight, packedOverlay);
 	}
-	
+
 }

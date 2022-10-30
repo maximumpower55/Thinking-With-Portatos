@@ -1,19 +1,16 @@
 {
-    "type": "minecraft:crafting_shaped",
-    "pattern": [
-        "YX",
-        "XY"
-    ],
-    "key": {
-        "X": {
-            "item": "minecraft:calcite"
-        },
-        "Y": {
-            "item": "minecraft:diorite"
-        }
+  "type": "minecraft:crafting_shaped",
+  "pattern": ["YX", "XY"],
+  "key": {
+    "X": {
+      "item": "minecraft:calcite"
     },
-    "result": {
-        "item": "portalcubed:white_panel",
-        "count": 4
+    "Y": {
+      "item": "minecraft:diorite"
     }
+  },
+  "result": {
+    "item": "portalcubed:white_panel",
+    "count": 4
+  }
 }

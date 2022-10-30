@@ -17,43 +17,45 @@ import net.minecraft.fluid.FluidState;
 
 @Mixin(BackgroundRenderer.class)
 public abstract class BackgroundRendererMixin {
-    @Shadow
-    private static float red;
-    @Shadow
-    private static float green;
-    @Shadow
-    private static float blue;
-    @Shadow
-    private static long lastWaterFogColorUpdateTime;
 
-    @Inject(method = "render", at = @At("HEAD"), cancellable = true)
-    private static void portalcubed$renderCustomFluidFog(Camera camera, float tickDelta, ClientWorld world, int viewDistance, float skyDarkness, CallbackInfo ci) {
-        FluidState cameraSubmergedFluidState = ((CameraExt) camera).portalcubed$getSubmergedFluidState();
+	@Shadow
+	private static float red;
+	@Shadow
+	private static float green;
+	@Shadow
+	private static float blue;
+	@Shadow
+	private static long lastWaterFogColorUpdateTime;
 
-        if (cameraSubmergedFluidState.getFluid() instanceof ToxicGooFluid) {
-            // Dark brownish "red"
-            red = 99 / 255f;
-            green = 29 / 255f;
-            blue = 1 / 255f;
+	@Inject(method = "render", at = @At("HEAD"), cancellable = true)
+	private static void portalcubed$renderCustomFluidFog(Camera camera, float tickDelta, ClientWorld world, int viewDistance, float skyDarkness, CallbackInfo ci) {
+		FluidState cameraSubmergedFluidState = ((CameraExt) camera).portalcubed$getSubmergedFluidState();
 
-            lastWaterFogColorUpdateTime = -1L;
+		if (cameraSubmergedFluidState.getFluid() instanceof ToxicGooFluid) {
+			// Dark brownish "red"
+			red = 99 / 255f;
+			green = 29 / 255f;
+			blue = 1 / 255f;
 
-            RenderSystem.clearColor(red, green, blue, 0.0F);
+			lastWaterFogColorUpdateTime = -1L;
 
-            ci.cancel();
-        }
-    }
+			RenderSystem.clearColor(red, green, blue, 0.0F);
 
-    @Inject(method = "applyFog", at = @At("HEAD"), cancellable = true)
-    private static void applyFog(Camera camera, BackgroundRenderer.FogType fogType, float viewDistance, boolean thickFog, float tickDelta, CallbackInfo ci) {
-        FluidState cameraSubmergedFluidState = ((CameraExt) camera).portalcubed$getSubmergedFluidState();
+			ci.cancel();
+		}
+	}
 
-        if (cameraSubmergedFluidState.getFluid() instanceof ToxicGooFluid) {
-            // Same fog as lava with fire resistance
-            RenderSystem.setShaderFogStart(0.0F);
-            RenderSystem.setShaderFogEnd(3.0F);
+	@Inject(method = "applyFog", at = @At("HEAD"), cancellable = true)
+	private static void portalcubed$applyFog(Camera camera, BackgroundRenderer.FogType fogType, float viewDistance, boolean thickFog, float tickDelta, CallbackInfo ci) {
+		FluidState cameraSubmergedFluidState = ((CameraExt) camera).portalcubed$getSubmergedFluidState();
 
-            ci.cancel();
-        }
-    }
+		if (cameraSubmergedFluidState.getFluid() instanceof ToxicGooFluid) {
+			// Same fog as lava with fire resistance
+			RenderSystem.setShaderFogStart(0.0F);
+			RenderSystem.setShaderFogEnd(3.0F);
+
+			ci.cancel();
+		}
+	}
+
 }

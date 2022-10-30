@@ -6,6 +6,6 @@ import java.util.UUID;
 
 public interface Accessors {
 
-    Entity getEntity(UUID uuid);
+	Entity portalcubed$getEntity(UUID uuid);
 
 }

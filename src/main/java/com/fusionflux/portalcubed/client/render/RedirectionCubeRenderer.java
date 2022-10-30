@@ -10,23 +10,23 @@ import net.minecraft.client.render.entity.MobEntityRenderer;
 import net.minecraft.util.Identifier;
 
 public class RedirectionCubeRenderer extends MobEntityRenderer<RedirectionCubeEntity, RedirectionCubeModel> {
-    private static final Identifier BASE_TEXTURE = new Identifier(PortalCubed.MODID, "textures/entity/redirection_cube.png");
-    private static final Identifier ACTIVE_TEXTURE = new Identifier(PortalCubed.MODID, "textures/entity/redirection_cube_lit.png");
+	private static final Identifier BASE_TEXTURE = new Identifier(PortalCubed.MODID, "textures/entity/redirection_cube.png");
+	private static final Identifier ACTIVE_TEXTURE = new Identifier(PortalCubed.MODID, "textures/entity/redirection_cube_lit.png");
 
-    protected final RedirectionCubeModel model = new RedirectionCubeModel(MinecraftClient.getInstance().getEntityModelLoader().getModelPart(RedirectionCubeModel.REDIRECTION_CUBE_MAIN_LAYER));
+	protected final RedirectionCubeModel model = new RedirectionCubeModel(MinecraftClient.getInstance().getEntityModelLoader().getModelPart(RedirectionCubeModel.REDIRECTION_CUBE_MAIN_LAYER));
 
-    public RedirectionCubeRenderer(EntityRendererFactory.Context context) {
-        super(context, new RedirectionCubeModel(MinecraftClient.getInstance().getEntityModelLoader().getModelPart(RedirectionCubeModel.REDIRECTION_CUBE_MAIN_LAYER)), 0.5f);
-    }
-
-
+	public RedirectionCubeRenderer(EntityRendererFactory.Context context) {
+		super(context, new RedirectionCubeModel(MinecraftClient.getInstance().getEntityModelLoader().getModelPart(RedirectionCubeModel.REDIRECTION_CUBE_MAIN_LAYER)), 0.5f);
+	}
 
 
-    @Override
-    public Identifier getTexture(RedirectionCubeEntity entity) {
-        if( CalledValues.getOnButton(entity)){
-            return ACTIVE_TEXTURE;
-        }
-        return BASE_TEXTURE;
-    }
+
+
+	@Override
+	public Identifier getTexture(RedirectionCubeEntity entity) {
+		if( CalledValues.getOnButton(entity)){
+			return ACTIVE_TEXTURE;
+		}
+		return BASE_TEXTURE;
+	}
 }

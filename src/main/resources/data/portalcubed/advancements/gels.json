@@ -2,13 +2,11 @@
   "parent": "minecraft:recipes/root",
   "rewards": {
     "recipes": [
-
       "portalcubed:base_gel_blob_crafting",
       "portalcubed:repulsion_gel_blob_crafting",
       "portalcubed:propulsion_gel_blob_crafting",
       "portalcubed:conversion_gel_blob_crafting",
       "portalcubed:adhesion_gel_blob_crafting"
-
     ]
   },
   "criteria": {
@@ -17,11 +15,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-"minecraft:wheat",
-"minecraft:sugar"
-
-]
+            "items": ["minecraft:wheat", "minecraft:sugar"]
           }
         ]
       }

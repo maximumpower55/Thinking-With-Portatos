@@ -19,35 +19,20 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(ClientPlayerEntity.class)
-public class ClientPlayerEntityMixin extends AbstractClientPlayerEntity {
-    @Shadow @Final protected MinecraftClient client;
+public abstract class ClientPlayerEntityMixin extends AbstractClientPlayerEntity {
 
-    public ClientPlayerEntityMixin(ClientWorld clientWorld, GameProfile gameProfile, @Nullable PlayerPublicKey playerPublicKey) {
-        super(clientWorld, gameProfile, playerPublicKey);
-    }
+	@Shadow @Final protected MinecraftClient client;
 
+	private ClientPlayerEntityMixin(ClientWorld clientWorld, GameProfile gameProfile, @Nullable PlayerPublicKey playerPublicKey) {
+		super(clientWorld, gameProfile, playerPublicKey);
+	}
 
-    @Inject(method = "wouldCollideAt", at = @At("HEAD"), cancellable = true)
-    public void portalCubed$changeCollision(BlockPos pos, CallbackInfoReturnable<Boolean> cir) {
-        VoxelShape portalBox = CalledValues.getPortalCutout(((ClientPlayerEntity)(Object)this));
-        if(portalBox != VoxelShapes.empty()){
-            cir.setReturnValue(false);
-        }
-    }
-
-
-    //@Inject(method = "tick", at = @At("TAIL"))
-    //public void tick(CallbackInfo ci) {
-//
-    //    //if(!((Entity) (Object) this).world.isClient) {
-    //    List<ExperimentalPortal> list = ((Entity) (Object) this).world.getNonSpectatingEntities(ExperimentalPortal.class, this.client.player.getBoundingBox());
-    //    VoxelShape ommitedDirections = VoxelShapes.empty();
-    //    for (ExperimentalPortal entity1 : list) {
-//
-    //        ommitedDirections = VoxelShapes.union(ommitedDirections, VoxelShapes.cuboid(entity1.calculateCuttoutBox()));
-    //    }
-    //    CalledValues.setPortalCutout(((Entity) (Object) this), ommitedDirections);
-//
-    //}
+	@Inject(method = "wouldCollideAt", at = @At("HEAD"), cancellable = true)
+	private void portalcubed$changeCollision(BlockPos pos, CallbackInfoReturnable<Boolean> cir) {
+		VoxelShape portalBox = CalledValues.getPortalCutout(((ClientPlayerEntity)(Object)this));
+		if(portalBox != VoxelShapes.empty()){
+			cir.setReturnValue(false);
+		}
+	}
 
 }

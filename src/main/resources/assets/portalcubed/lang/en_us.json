@@ -164,13 +164,11 @@
   "block.portalcubed.laser_emitter": "Laser Emitter",
   "block.portalcubed.laser_catcher": "Laser Catcher",
 
-
   "block.portalcubed.light_bridge_emitter": "Hardlight Bridge Emitter",
 
   "text.autoconfig.portalcubed.title": "Portal Cubed Config",
 
   "text.autoconfig.portalcubed.category.numbers": "Item Config",
-
 
   "text.autoconfig.portalcubed.category.numbersblock": "Block Config",
   "text.autoconfig.portalcubed.option.numbersblock.maxBridgeLength": "Hardlight Bridge Max Length",
@@ -181,10 +179,8 @@
   "text.autoconfig.portalcubed.option.enabled.enablePortal2Blocks": "Enable Portal Pannels",
   "text.autoconfig.portalcubed.option.enabled.enableHLB": "Enable Hardlight Bridges",
 
-
   "death.attack.portalcubed.acid": "%s was dissolved in toxic goo",
 
-
-  "key.portalcubed.category" : "Portal³",
-  "key.portalcubed.grab" : "Grab"
+  "key.portalcubed.category": "Portal³",
+  "key.portalcubed.grab": "Grab"
 }

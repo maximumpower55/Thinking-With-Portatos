@@ -1,19 +1,16 @@
 {
-    "type": "minecraft:crafting_shaped",
-    "pattern": [
-        "YX",
-        "XY"
-    ],
-    "key": {
-        "X": {
-            "item": "minecraft:smooth_basalt"
-        },
-        "Y": {
-            "item": "minecraft:cobbled_deepslate"
-        }
+  "type": "minecraft:crafting_shaped",
+  "pattern": ["YX", "XY"],
+  "key": {
+    "X": {
+      "item": "minecraft:smooth_basalt"
     },
-    "result": {
-        "item": "portalcubed:smooth_gray_panel",
-        "count": 16
+    "Y": {
+      "item": "minecraft:cobbled_deepslate"
     }
+  },
+  "result": {
+    "item": "portalcubed:smooth_gray_panel",
+    "count": 16
+  }
 }

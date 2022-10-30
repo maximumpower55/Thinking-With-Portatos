@@ -1,23 +1,19 @@
 {
-    "type": "minecraft:crafting_shaped",
-    "pattern": [
-        " Z ",
-        "ZYZ",
-        "XXX"
-    ],
-    "key": {
-        "Y": {
-            "item": "minecraft:jukebox"
-        },
-        "X": {
-            "item": "minecraft:black_dye"
-        },
-        "Z": {
-            "item": "minecraft:iron_nugget"
-        }
+  "type": "minecraft:crafting_shaped",
+  "pattern": [" Z ", "ZYZ", "XXX"],
+  "key": {
+    "Y": {
+      "item": "minecraft:jukebox"
     },
-    "result": {
-        "item": "portalcubed:radio",
-        "count": 1
+    "X": {
+      "item": "minecraft:black_dye"
+    },
+    "Z": {
+      "item": "minecraft:iron_nugget"
     }
+  },
+  "result": {
+    "item": "portalcubed:radio",
+    "count": 1
+  }
 }

@@ -27,18 +27,18 @@ public class ChairModel extends EntityModel<ChairEntity> {
 		ModelPartData modelPartData = modelData.getRoot();
 		ModelPartData bone = modelPartData.addChild("bb_main", ModelPartBuilder.create().uv(0, 0).cuboid(-3.5F, -0.5F, -3.5F, 7.0F, 1.0F, 7.0F, new Dilation(0.0F)), ModelTransform.pivot(-0.068F, 17.0F, 0.0251F));
 
-		ModelPartData cube_r1 = bone.addChild("cube_r1", ModelPartBuilder.create().uv(16, 8).cuboid(-1.0F, -3.5F, 0.5F, 2.0F, 0.0F, 4.0F, new Dilation(0.0F))
+		bone.addChild("cube_r1", ModelPartBuilder.create().uv(16, 8).cuboid(-1.0F, -3.5F, 0.5F, 2.0F, 0.0F, 4.0F, new Dilation(0.0F))
 				.uv(11, 17).cuboid(-3.5F, -3.5F, 4.5F, 7.0F, 1.0F, 4.0F, new Dilation(0.0F)), ModelTransform.of(0.0F, 0.0F, 0.0F, 1.5708F, 0.0F, 0.0F));
 
-		ModelPartData cube_r2 = bone.addChild("cube_r2", ModelPartBuilder.create().uv(0, 9).cuboid(-5.0F, -7.0F, 0.5F, 9.0F, 5.0F, 0.0F, new Dilation(0.0F))
+		bone.addChild("cube_r2", ModelPartBuilder.create().uv(0, 9).cuboid(-5.0F, -7.0F, 0.5F, 9.0F, 5.0F, 0.0F, new Dilation(0.0F))
 				.uv(0, 0).cuboid(3.0F, -2.5F, 0.0F, 2.0F, 2.0F, 1.0F, new Dilation(0.0F)), ModelTransform.of(0.7751F, 7.5F, 0.068F, 0.0F, -0.7854F, 0.0F));
 
-		ModelPartData cube_r3 = bone.addChild("cube_r3", ModelPartBuilder.create().uv(0, 9).cuboid(-5.0F, -7.0F, -0.5F, 9.0F, 5.0F, 0.0F, new Dilation(0.0F))
+		bone.addChild("cube_r3", ModelPartBuilder.create().uv(0, 9).cuboid(-5.0F, -7.0F, -0.5F, 9.0F, 5.0F, 0.0F, new Dilation(0.0F))
 				.uv(0, 0).cuboid(3.0F, -2.5F, -1.0F, 2.0F, 2.0F, 1.0F, new Dilation(0.0F)), ModelTransform.of(0.7751F, 7.5F, 0.068F, 0.0F, 0.7854F, 0.0F));
 
-		ModelPartData cube_r4 = bone.addChild("cube_r4", ModelPartBuilder.create().uv(0, 0).cuboid(-5.0F, -2.0F, -1.0F, 2.0F, 2.0F, 1.0F, new Dilation(0.0F)), ModelTransform.of(-0.7249F, 7.0F, 0.068F, 0.0F, -0.7854F, 0.0F));
+		bone.addChild("cube_r4", ModelPartBuilder.create().uv(0, 0).cuboid(-5.0F, -2.0F, -1.0F, 2.0F, 2.0F, 1.0F, new Dilation(0.0F)), ModelTransform.of(-0.7249F, 7.0F, 0.068F, 0.0F, -0.7854F, 0.0F));
 
-		ModelPartData cube_r5 = bone.addChild("cube_r5", ModelPartBuilder.create().uv(0, 0).cuboid(-5.0F, -2.0F, 0.0F, 2.0F, 2.0F, 1.0F, new Dilation(0.0F)), ModelTransform.of(-0.7249F, 7.0F, 0.068F, 0.0F, 0.7854F, 0.0F));
+		bone.addChild("cube_r5", ModelPartBuilder.create().uv(0, 0).cuboid(-5.0F, -2.0F, 0.0F, 2.0F, 2.0F, 1.0F, new Dilation(0.0F)), ModelTransform.of(-0.7249F, 7.0F, 0.068F, 0.0F, 0.7854F, 0.0F));
 		return TexturedModelData.of(modelData, 64, 64);
 	}
 
@@ -51,5 +51,6 @@ public class ChairModel extends EntityModel<ChairEntity> {
 
 		bb_main.render(matrixStack, buffer, packedLight, packedOverlay);
 	}
-	
+
 }
+

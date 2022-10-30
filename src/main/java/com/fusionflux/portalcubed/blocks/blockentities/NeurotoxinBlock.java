@@ -15,53 +15,55 @@ import net.minecraft.util.shape.VoxelShapes;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
-
-import java.util.Random;
+import org.quiltmc.qsl.block.content.registry.api.BlockContentRegistries;
+import org.quiltmc.qsl.block.content.registry.api.FlammableBlockEntry;
 
 public class NeurotoxinBlock extends BlockWithEntity {
 
-    public NeurotoxinBlock(Settings settings) {
-        super(settings);
-    }
+	public NeurotoxinBlock(Settings settings) {
+		super(settings);
 
-    @Override
-    public VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
-        return VoxelShapes.empty();
-    }
+		BlockContentRegistries.FLAMMABLE_BLOCK.put(this, new FlammableBlockEntry(10000, 10000));
+	}
 
-    @Override
-    public void scheduledTick(BlockState state, ServerWorld world, BlockPos pos, RandomGenerator random) {
-        if (state.isOf(this)) {
-            if (random.nextInt(10) == 0) {
-                world.setBlockState(pos, Blocks.AIR.getDefaultState(), 3);
-            }
-        }
-    }
+	@Override
+	public VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
+		return VoxelShapes.empty();
+	}
 
-    @Override
-    public boolean isTranslucent(BlockState state, BlockView world, BlockPos pos) {
-        return true;
-    }
+	@Override
+	public void scheduledTick(BlockState state, ServerWorld world, BlockPos pos, RandomGenerator random) {
+		if (state.isOf(this)) {
+			if (random.nextInt(10) == 0) {
+				world.setBlockState(pos, Blocks.AIR.getDefaultState(), 3);
+			}
+		}
+	}
 
-    @Override
-    public BlockRenderType getRenderType(BlockState state) {
-        return BlockRenderType.MODEL;
-    }
+	@Override
+	public boolean isTranslucent(BlockState state, BlockView world, BlockPos pos) {
+		return true;
+	}
 
-    @Override
-    public void onEntityCollision(BlockState state, World world, BlockPos pos, Entity entity) {
-        if (!world.isClient) {
-            entity.damage(DamageSource.DROWN, 1);
-        }
-    }
+	@Override
+	public BlockRenderType getRenderType(BlockState state) {
+		return BlockRenderType.MODEL;
+	}
 
-    @Override
-    public @Nullable BlockEntity createBlockEntity(BlockPos pos, BlockState state) {
-        return new NeurotoxinBlockEntity(pos,state);
-    }
+	@Override
+	public void onEntityCollision(BlockState state, World world, BlockPos pos, Entity entity) {
+		if (!world.isClient) {
+			entity.damage(DamageSource.DROWN, 1);
+		}
+	}
 
-    @Override
-    public <T extends BlockEntity> BlockEntityTicker<T> getTicker(World world, BlockState state, BlockEntityType<T> type) {
-        return checkType(type, PortalCubedBlocks.NEUROTOXIN_BLOCK_ENTITY, NeurotoxinBlockEntity::tick);
-    }
+	@Override
+	public @Nullable BlockEntity createBlockEntity(BlockPos pos, BlockState state) {
+		return new NeurotoxinBlockEntity(pos,state);
+	}
+
+	@Override
+	public <T extends BlockEntity> BlockEntityTicker<T> getTicker(World world, BlockState state, BlockEntityType<T> type) {
+		return checkType(type, PortalCubedBlocks.NEUROTOXIN_BLOCK_ENTITY, NeurotoxinBlockEntity::tick);
+	}
 }

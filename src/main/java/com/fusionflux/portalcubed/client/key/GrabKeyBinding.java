@@ -19,23 +19,23 @@ import org.quiltmc.qsl.networking.api.client.ClientPlayNetworking;
 
 @Environment(EnvType.CLIENT)
 public class GrabKeyBinding {
-    public static void register() {
-        KeyBind key = new KeyBind(
-                "key." + PortalCubed.MODID + ".grab",
-                InputUtil.Type.KEYSYM,
-                GLFW.GLFW_KEY_G,
-                "key." + PortalCubed.MODID + ".category"
-        );
+	public static void register() {
+		KeyBind key = new KeyBind(
+				"key." + PortalCubed.MODID + ".grab",
+				InputUtil.Type.KEYSYM,
+				GLFW.GLFW_KEY_G,
+				"key." + PortalCubed.MODID + ".category"
+		);
 
-        KeyBindingHelper.registerKeyBinding(key);
-        ClientTickEvents.END.register(client -> {
-            if (client.player != null && key.wasPressed()) {
-                CorePhysicsEntity playercube = (CorePhysicsEntity) ((Accessors)client.player.world).getEntity(CalledValues.getCubeUUID(client.player));
-                if (playercube != null) {
-                    playercube.dropCube();
-                }
-                ClientPlayNetworking.send(PortalCubedServerPackets.GRAB_KEY_PRESSED, PacketByteBufs.create());
-            }
-        });
-    }
+		KeyBindingHelper.registerKeyBinding(key);
+		ClientTickEvents.END.register(client -> {
+			if (client.player != null && key.wasPressed()) {
+				CorePhysicsEntity playercube = (CorePhysicsEntity) ((Accessors)client.player.world).portalcubed$getEntity(CalledValues.getCubeUUID(client.player));
+				if (playercube != null) {
+					playercube.dropCube();
+				}
+				ClientPlayNetworking.send(PortalCubedServerPackets.GRAB_KEY_PRESSED, PacketByteBufs.create());
+			}
+		});
+	}
 }

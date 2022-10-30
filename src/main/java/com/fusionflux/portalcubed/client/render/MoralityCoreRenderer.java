@@ -9,18 +9,18 @@ import net.minecraft.client.render.entity.MobEntityRenderer;
 import net.minecraft.util.Identifier;
 
 public class MoralityCoreRenderer extends MobEntityRenderer<MoralityCoreEntity, MoralityCoreModel> {
-    private static final Identifier BASE_TEXTURE = new Identifier(PortalCubed.MODID, "textures/entity/portal_1_cores.png");
-    protected final MoralityCoreModel model = new MoralityCoreModel(MinecraftClient.getInstance().getEntityModelLoader().getModelPart(MoralityCoreModel.MORTALITY_CORE_LAYER));
+	private static final Identifier BASE_TEXTURE = new Identifier(PortalCubed.MODID, "textures/entity/portal_1_cores.png");
+	protected final MoralityCoreModel model = new MoralityCoreModel(MinecraftClient.getInstance().getEntityModelLoader().getModelPart(MoralityCoreModel.MORTALITY_CORE_LAYER));
 
-    public MoralityCoreRenderer(EntityRendererFactory.Context context) {
-        super(context, new MoralityCoreModel(MinecraftClient.getInstance().getEntityModelLoader().getModelPart(MoralityCoreModel.MORTALITY_CORE_LAYER)), 0.5f);
-    }
-
-
+	public MoralityCoreRenderer(EntityRendererFactory.Context context) {
+		super(context, new MoralityCoreModel(MinecraftClient.getInstance().getEntityModelLoader().getModelPart(MoralityCoreModel.MORTALITY_CORE_LAYER)), 0.5f);
+	}
 
 
-    @Override
-    public Identifier getTexture(MoralityCoreEntity entity) {
-        return BASE_TEXTURE;
-    }
+
+
+	@Override
+	public Identifier getTexture(MoralityCoreEntity entity) {
+		return BASE_TEXTURE;
+	}
 }
