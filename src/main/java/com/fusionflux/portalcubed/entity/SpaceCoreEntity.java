@@ -12,7 +12,7 @@ import net.minecraft.world.World;
 
 import java.util.Random;
 
-public class SpaceCoreEntity extends CorePhysicsEntity  {
+public class SpaceCoreEntity extends CorePhysicsEntity {
 
 	public SpaceCoreEntity(EntityType<? extends PathAwareEntity> type, World world) {
 		super(type, world);

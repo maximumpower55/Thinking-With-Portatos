@@ -11,7 +11,7 @@ import net.minecraft.world.World;
 
 import java.util.Random;
 
-public class AngerCoreEntity extends CorePhysicsEntity  {
+public class AngerCoreEntity extends CorePhysicsEntity {
 
 	public AngerCoreEntity(EntityType<? extends PathAwareEntity> type, World world) {
 		super(type, world);
@@ -55,4 +55,5 @@ public class AngerCoreEntity extends CorePhysicsEntity  {
 		}
 		super.tick();
 	}
+
 }

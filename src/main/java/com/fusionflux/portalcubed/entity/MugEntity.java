@@ -15,7 +15,7 @@ import net.minecraft.world.World;
 
 import java.util.Random;
 
-public class MugEntity extends CorePhysicsEntity  {
+public class MugEntity extends CorePhysicsEntity {
 
 	public MugEntity(EntityType<? extends PathAwareEntity> type, World world) {
 		super(type, world);

@@ -8,7 +8,7 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.world.GameRules;
 import net.minecraft.world.World;
 
-public class Portal1CompanionCubeEntity extends CorePhysicsEntity  {
+public class Portal1CompanionCubeEntity extends CorePhysicsEntity {
 	public Portal1CompanionCubeEntity(EntityType<? extends PathAwareEntity> type, World world) {
 		super(type, world);
 	}

@@ -11,7 +11,7 @@ import net.minecraft.world.World;
 
 import java.util.Random;
 
-public class CakeCoreEntity extends CorePhysicsEntity  {
+public class CakeCoreEntity extends CorePhysicsEntity {
 
 	public CakeCoreEntity(EntityType<? extends PathAwareEntity> type, World world) {
 		super(type, world);

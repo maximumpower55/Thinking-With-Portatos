@@ -19,6 +19,7 @@ import org.quiltmc.qsl.networking.api.client.ClientPlayNetworking;
 
 @Environment(EnvType.CLIENT)
 public class GrabKeyBinding {
+
 	public static void register() {
 		KeyBind key = new KeyBind(
 				"key." + PortalCubed.MODID + ".grab",
@@ -38,4 +39,5 @@ public class GrabKeyBinding {
 			}
 		});
 	}
+
 }

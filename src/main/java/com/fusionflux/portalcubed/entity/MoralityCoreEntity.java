@@ -8,7 +8,7 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.world.GameRules;
 import net.minecraft.world.World;
 
-public class MoralityCoreEntity extends CorePhysicsEntity  {
+public class MoralityCoreEntity extends CorePhysicsEntity {
 
 	public MoralityCoreEntity(EntityType<? extends PathAwareEntity> type, World world) {
 		super(type, world);

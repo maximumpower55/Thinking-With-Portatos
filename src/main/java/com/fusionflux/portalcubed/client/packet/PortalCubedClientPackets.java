@@ -18,6 +18,7 @@ import java.util.UUID;
 
 
 public class PortalCubedClientPackets {
+
 	public static final Identifier SPAWN_PACKET = new Identifier(PortalCubed.MODID, "spawn_packet");
 	@Environment(EnvType.CLIENT)
 	public static void registerPackets() {

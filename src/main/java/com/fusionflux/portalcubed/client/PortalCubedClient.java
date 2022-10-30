@@ -42,6 +42,14 @@ public class PortalCubedClient implements ClientModInitializer {
 		HudRenderCallback.EVENT.register(PortalHud::renderPortalLeft);
 		HudRenderCallback.EVENT.register(PortalHud::renderPortalRight);
 
+		FluidRenderHandlerRegistry.INSTANCE.setBlockTransparency(PortalCubedBlocks.NEUROTOXIN_BLOCK, true);
+		FluidRenderHandlerRegistry.INSTANCE.setBlockTransparency(PortalCubedBlocks._1x1_DOUBLE_CROSSBAR, true);
+		FluidRenderHandlerRegistry.INSTANCE.setBlockTransparency(PortalCubedBlocks._1x1_SINGLE_CROSSBAR, true);
+		FluidRenderHandlerRegistry.INSTANCE.setBlockTransparency(PortalCubedBlocks._2X2_DOUBLE_CROSSBAR_BOTTOM_LEFT, true);
+		FluidRenderHandlerRegistry.INSTANCE.setBlockTransparency(PortalCubedBlocks._2X2_DOUBLE_CROSSBAR_BOTTOM_RIGHT, true);
+		FluidRenderHandlerRegistry.INSTANCE.setBlockTransparency(PortalCubedBlocks._2X2_DOUBLE_CROSSBAR_TOP_LEFT, true);
+		FluidRenderHandlerRegistry.INSTANCE.setBlockTransparency(PortalCubedBlocks._2X2_DOUBLE_CROSSBAR_TOP_RIGHT, true);
+
 		final Identifier toxicGooStillSpriteId = id("block/toxic_goo_still");
 		final Identifier toxicGooFlowSpriteId = id("block/toxic_goo_flow");
 		FluidRenderHandlerRegistry.INSTANCE.register(PortalCubedFluids.TOXIC_GOO.still, PortalCubedFluids.TOXIC_GOO.flowing, new SimpleFluidRenderHandler(toxicGooStillSpriteId, toxicGooFlowSpriteId));
@@ -72,12 +80,12 @@ public class PortalCubedClient implements ClientModInitializer {
 		BlockRenderLayerMap.put(RenderLayer.getCutout(), PortalCubedBlocks.PORTAL1DOOR);
 		BlockRenderLayerMap.put(RenderLayer.getCutout(), PortalCubedBlocks.PORTAL2DOOR);
 		BlockRenderLayerMap.put(RenderLayer.getCutout(), PortalCubedBlocks.OLDAPDOOR);
-		BlockRenderLayerMap.put(RenderLayer.getTranslucent(), PortalCubedBlocks._1x1_DOUBLE_CROSSBAR);
-		BlockRenderLayerMap.put(RenderLayer.getTranslucent(), PortalCubedBlocks._1x1_SINGLE_CROSSBAR);
-		BlockRenderLayerMap.put(RenderLayer.getTranslucent(), PortalCubedBlocks._2X2_DOUBLE_CROSSBAR_BOTTOM_LEFT);
-		BlockRenderLayerMap.put(RenderLayer.getTranslucent(), PortalCubedBlocks._2X2_DOUBLE_CROSSBAR_BOTTOM_RIGHT);
-		BlockRenderLayerMap.put(RenderLayer.getTranslucent(), PortalCubedBlocks._2X2_DOUBLE_CROSSBAR_TOP_LEFT);
-		BlockRenderLayerMap.put(RenderLayer.getTranslucent(), PortalCubedBlocks._2X2_DOUBLE_CROSSBAR_TOP_RIGHT);
+		BlockRenderLayerMap.put(RenderLayer.getCutoutMipped(), PortalCubedBlocks._1x1_DOUBLE_CROSSBAR);
+		BlockRenderLayerMap.put(RenderLayer.getCutoutMipped(), PortalCubedBlocks._1x1_SINGLE_CROSSBAR);
+		BlockRenderLayerMap.put(RenderLayer.getCutoutMipped(), PortalCubedBlocks._2X2_DOUBLE_CROSSBAR_BOTTOM_LEFT);
+		BlockRenderLayerMap.put(RenderLayer.getCutoutMipped(), PortalCubedBlocks._2X2_DOUBLE_CROSSBAR_BOTTOM_RIGHT);
+		BlockRenderLayerMap.put(RenderLayer.getCutoutMipped(), PortalCubedBlocks._2X2_DOUBLE_CROSSBAR_TOP_LEFT);
+		BlockRenderLayerMap.put(RenderLayer.getCutoutMipped(), PortalCubedBlocks._2X2_DOUBLE_CROSSBAR_TOP_RIGHT);
 	}
 
 	public static void registerItemRenderLayers() {

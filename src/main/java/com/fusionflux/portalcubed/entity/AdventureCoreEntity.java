@@ -11,7 +11,7 @@ import net.minecraft.world.World;
 
 import java.util.Random;
 
-public class AdventureCoreEntity extends CorePhysicsEntity  {
+public class AdventureCoreEntity extends CorePhysicsEntity {
 
 	public AdventureCoreEntity(EntityType<? extends PathAwareEntity> type, World world) {
 		super(type, world);

@@ -15,7 +15,7 @@ import net.minecraft.world.World;
 import java.util.Locale;
 import java.util.Objects;
 
-public class RadioEntity extends CorePhysicsEntity  {
+public class RadioEntity extends CorePhysicsEntity {
 	public RadioEntity(EntityType<? extends PathAwareEntity> type, World world) {
 		super(type, world);
 	}
