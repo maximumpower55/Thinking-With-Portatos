@@ -2,7 +2,6 @@ package com.fusionflux.portalcubed.blocks;
 
 import com.fusionflux.portalcubed.PortalCubed;
 import com.fusionflux.portalcubed.blocks.blockentities.*;
-import com.fusionflux.portalcubed.config.PortalCubedConfig;
 
 import net.minecraft.block.*;
 import net.minecraft.block.entity.BlockEntityType;
@@ -23,6 +22,7 @@ import org.quiltmc.qsl.item.setting.api.QuiltItemSettings;
 import static com.fusionflux.portalcubed.PortalCubed.id;
 
 public class PortalCubedBlocks {
+
 	public static final Item BASE_GEL = new Item(new QuiltItemSettings().group(PortalCubed.TestingElementsGroup).maxCount(64).fireproof());
 	public static final PropulsionGel PROPULSION_GEL = new PropulsionGel(QuiltBlockSettings.of(Material.PLANT).ticksRandomly().hardness(0f).nonOpaque().noCollision().sounds(new BlockSoundGroup(1, -1, SoundEvents.BLOCK_HONEY_BLOCK_BREAK, SoundEvents.BLOCK_HONEY_BLOCK_STEP, SoundEvents.BLOCK_HONEY_BLOCK_PLACE, SoundEvents.BLOCK_HONEY_BLOCK_HIT, SoundEvents.BLOCK_HONEY_BLOCK_FALL)));
 	public static final RepulsionGel REPULSION_GEL = new RepulsionGel(QuiltBlockSettings.of(Material.PLANT).ticksRandomly().hardness(0f).nonOpaque().noCollision().sounds(new BlockSoundGroup(1, -1, SoundEvents.BLOCK_HONEY_BLOCK_BREAK, SoundEvents.BLOCK_HONEY_BLOCK_STEP, SoundEvents.BLOCK_HONEY_BLOCK_PLACE, SoundEvents.BLOCK_HONEY_BLOCK_HIT, SoundEvents.BLOCK_HONEY_BLOCK_FALL)));
@@ -136,6 +136,7 @@ public class PortalCubedBlocks {
 	public static final DuelExcursionFunnelEmitter DUEL_EXCURSION_FUNNEL_EMITTER = new DuelExcursionFunnelEmitter(QuiltBlockSettings.of(Material.STONE).strength(3.5f,3.5f).requiresTool().nonOpaque().sounds(BlockSoundGroup.STONE));
 	public static final ReversedExcursionFunnelEmitter REVERSED_EXCURSION_FUNNEL_EMITTER = new ReversedExcursionFunnelEmitter(QuiltBlockSettings.of(Material.STONE).strength(3.5f,3.5f).requiresTool().nonOpaque().sounds(BlockSoundGroup.STONE));
 	public static final ExcursionFunnelMain EXCURSION_FUNNEL = new ExcursionFunnelMain(QuiltBlockSettings.of(Material.AIR).nonOpaque().noCollision().luminance(10));
+	//public static final LightBlock LIGHT_CUBE = new LightBlock(QuiltBlockSettings.of(Material.AIR).luminance(15).noCollision().air().strength(3.5f,3.5f).requiresTool());
 
 	public static final TallButton TALL_BUTTON = new TallButton(QuiltBlockSettings.of(Material.STONE).strength(3.5f,3.5f).requiresTool());
 	public static final TallButton OLD_AP_PEDESTAL_BUTTON = new TallButton(QuiltBlockSettings.of(Material.STONE).strength(3.5f,3.5f).requiresTool());
@@ -171,6 +172,8 @@ public class PortalCubedBlocks {
 	public static final OldApFloorButtonBlock OLD_AP_FLOOR_BUTTON = new OldApFloorButtonBlock(QuiltBlockSettings.of(Material.STONE).strength(3.5f,3.5f).requiresTool().nonOpaque().noCollision().sounds(BlockSoundGroup.STONE));
 	public static BlockEntityType<OldApFloorButtonBlockEntity> OLD_AP_FLOOR_BUTTON_BLOCK_ENTITY;
 
+	//public static final GrilTest GRILTEST = new GrilTest(QuiltBlockSettings.of(Material.STONE).strength(3.5f,3.5f).requiresTool().nonOpaque().noCollision().sounds(BlockSoundGroup.STONE));
+
 	public static FlowableFluid STILL_TOXIC_GOO;
 	public static FlowableFluid FLOWING_TOXIC_GOO;
 	public static Item TOXIC_GOO_BUCKET;
@@ -182,8 +185,6 @@ public class PortalCubedBlocks {
 	public static TagKey<Block> ALLOW_PORTAL_IN = TagKey.of(Registry.BLOCK_KEY,new Identifier("portalcubed", "allowinside"));
 	public static TagKey<Block> IMMOVABLE_BLOCKS = TagKey.of(Registry.BLOCK_KEY,new Identifier("portalcubed", "immovable_blocks"));
 	public static void registerBlocks() {
-		if (PortalCubedConfig.enableGels) {
-
 			Registry.register(Registry.ITEM, new Identifier(PortalCubed.MODID, "base_gel"), BASE_GEL);
 
 			Registry.register(Registry.BLOCK, id("propulsion_gel"), PROPULSION_GEL);
@@ -196,9 +197,7 @@ public class PortalCubedBlocks {
 
 			Registry.register(Registry.BLOCK, id("conversion_gel"), CONVERSION_GEL);
 			Registry.register(Registry.ITEM, id("conversion_gel"), new BlockItem(CONVERSION_GEL, new Item.Settings().group(PortalCubed.TestingElementsGroup).maxCount(64)));
-		}
 
-		if (PortalCubedConfig.enablePortal2Blocks) {
 			Registry.register(Registry.BLOCK, id("portal_2_door"), PORTAL2DOOR);
 			Registry.register(Registry.ITEM, id("portal_2_door"), new BlockItem(PORTAL2DOOR, new Item.Settings().group(PortalCubed.TestingElementsGroup)));
 
@@ -441,8 +440,6 @@ public class PortalCubedBlocks {
 
 			Registry.register(Registry.BLOCK, id("old_ap_pedestal_button"), OLD_AP_PEDESTAL_BUTTON);
 			Registry.register(Registry.ITEM, id("old_ap_pedestal_button"), new BlockItem(OLD_AP_PEDESTAL_BUTTON, new Item.Settings().group(PortalCubed.TestingElementsGroup)));
-
-		}
 	}
 
 }

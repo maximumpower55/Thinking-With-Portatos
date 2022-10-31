@@ -4,6 +4,7 @@ import com.fusionflux.portalcubed.blocks.PortalCubedBlocks;
 import com.fusionflux.portalcubed.client.key.GrabKeyBinding;
 import com.fusionflux.portalcubed.client.packet.PortalCubedClientPackets;
 import com.fusionflux.portalcubed.client.render.*;
+import com.fusionflux.portalcubed.client.render.model.block.EmissiveModelRegistry;
 import com.fusionflux.portalcubed.client.render.model.entity.*;
 import com.fusionflux.portalcubed.entity.PortalCubedEntities;
 import com.fusionflux.portalcubed.fluids.PortalCubedFluids;
@@ -31,11 +32,13 @@ import static com.fusionflux.portalcubed.PortalCubed.id;
 
 @Environment(EnvType.CLIENT)
 public class PortalCubedClient implements ClientModInitializer {
+
 	@Override
 	public void onInitializeClient(ModContainer mod) {
 		registerEntityRenderers();
-		registerItemRenderLayers();
-		registerBlockRenderLayers();
+		registerColorProviders();
+		setRenderLayers();
+		registerEmissiveModels();
 		PortalCubedClientPackets.registerPackets();
 		GrabKeyBinding.register();
 
@@ -58,6 +61,63 @@ public class PortalCubedClient implements ClientModInitializer {
 			registry.register(toxicGooStillSpriteId);
 			registry.register(toxicGooFlowSpriteId);
 		});
+
+		ClientSpriteRegistryCallback.event(PlayerScreenHandler.BLOCK_ATLAS_TEXTURE).register((atlasTexture, registry) -> {
+			registry.register(toxicGooStillSpriteId);
+			registry.register(toxicGooFlowSpriteId);
+		});
+	}
+
+	private void setRenderLayers() {
+		BlockRenderLayerMap.put(RenderLayer.getTranslucent(), PortalCubedBlocks.HLB_BLOCK);
+		BlockRenderLayerMap.put(RenderLayer.getCutout(), PortalCubedBlocks.HLB_EMITTER_BLOCK);
+		BlockRenderLayerMap.put(RenderLayer.getTranslucent(), PortalCubedBlocks.NEUROTOXIN_BLOCK);
+		BlockRenderLayerMap.put(RenderLayer.getTranslucent(), PortalCubedBlocks.EXCURSION_FUNNEL);
+		BlockRenderLayerMap.put(RenderLayer.getTranslucent(), PortalCubedBlocks.EXCURSION_FUNNEL_EMITTER);
+		BlockRenderLayerMap.put(RenderLayer.getTranslucent(), PortalCubedBlocks.DUEL_EXCURSION_FUNNEL_EMITTER);
+		BlockRenderLayerMap.put(RenderLayer.getTranslucent(), PortalCubedBlocks.REVERSED_EXCURSION_FUNNEL_EMITTER);
+		BlockRenderLayerMap.put(RenderLayer.getTranslucent(), PortalCubedBlocks.NEUROTOXIN_EMITTER);
+		BlockRenderLayerMap.put(RenderLayer.getTranslucent(), PortalCubedBlocks.LASER);
+		BlockRenderLayerMap.put(RenderLayer.getTranslucent(), PortalCubedBlocks.LASER_EMITTER);
+		BlockRenderLayerMap.put(RenderLayer.getTranslucent(), PortalCubedBlocks.LASER_CATCHER);
+		BlockRenderLayerMap.put(RenderLayer.getTranslucent(), PortalCubedBlocks.LASER_RELAY);
+		BlockRenderLayerMap.put(RenderLayer.getTranslucent(), PortalCubedBlocks.CONVERSION_GEL);
+		BlockRenderLayerMap.put(RenderLayer.getTranslucent(), PortalCubedBlocks.PROPULSION_GEL);
+		BlockRenderLayerMap.put(RenderLayer.getTranslucent(), PortalCubedBlocks.REPULSION_GEL);
+		BlockRenderLayerMap.put(RenderLayer.getTranslucent(), PortalCubedBlocks.ADHESION_GEL);
+		BlockRenderLayerMap.put(RenderLayer.getCutout(), PortalCubedBlocks.PORTAL1DOOR);
+		BlockRenderLayerMap.put(RenderLayer.getCutout(), PortalCubedBlocks.PORTAL2DOOR);
+		BlockRenderLayerMap.put(RenderLayer.getCutout(), PortalCubedBlocks.OLDAPDOOR);
+		BlockRenderLayerMap.put(RenderLayer.getTranslucent(), PortalCubedBlocks._1x1_DOUBLE_CROSSBAR);
+		BlockRenderLayerMap.put(RenderLayer.getTranslucent(), PortalCubedBlocks._1x1_SINGLE_CROSSBAR);
+		BlockRenderLayerMap.put(RenderLayer.getTranslucent(), PortalCubedBlocks._2X2_DOUBLE_CROSSBAR_BOTTOM_LEFT);
+		BlockRenderLayerMap.put(RenderLayer.getTranslucent(), PortalCubedBlocks._2X2_DOUBLE_CROSSBAR_BOTTOM_RIGHT);
+		BlockRenderLayerMap.put(RenderLayer.getTranslucent(), PortalCubedBlocks._2X2_DOUBLE_CROSSBAR_TOP_LEFT);
+		BlockRenderLayerMap.put(RenderLayer.getTranslucent(), PortalCubedBlocks._2X2_DOUBLE_CROSSBAR_TOP_RIGHT);
+	}
+
+	private void registerEmissiveModels() {
+		// Misc
+
+		EmissiveModelRegistry.register(id("block/laser"), id("block/laser_beam"));
+		EmissiveModelRegistry.register(id("block/light_bridge"), id("block/light_bridge"));
+
+		// Emitters
+
+		EmissiveModelRegistry.register(id("block/laser_emitter"), id("block/laser_emitter_e"));
+		EmissiveModelRegistry.register(id("block/light_bridge_emitter_on"), id("block/light_bridge"));
+		EmissiveModelRegistry.register(id("block/laser_emitter_active"), id("block/laser_emitter_e"));
+
+		// Buttons
+
+		EmissiveModelRegistry.register(id("block/floor_button"), id("block/floor_button_e"));
+		EmissiveModelRegistry.register(id("block/pedestal_button"), id("block/pedestal_button_e"));
+		EmissiveModelRegistry.register(id("block/floor_button_active"), id("block/floor_button_e"));
+		EmissiveModelRegistry.register(id("block/pedestal_button_active"), id("block/pedestal_button_e"));
+	}
+
+	private void registerColorProviders() {
+		ColorProviderRegistry.ITEM.register((stack, tintIndex) -> tintIndex > 0 ? -1 : ((DyeableItem) stack.getItem()).getColor(stack), PortalCubedItems.PORTAL_GUN);
 	}
 
 	public static void registerBlockRenderLayers() {
@@ -157,4 +217,5 @@ public class PortalCubedClient implements ClientModInitializer {
 		EntityModelLayerRegistry.registerModelLayer(AdventureCoreModel.ADVENTURE_CORE_LAYER, AdventureCoreModel::getTexturedModelData);
 		EntityRendererRegistry.register(PortalCubedEntities.ADVENTURE_CORE, AdventureCoreRenderer::new);
 	}
+
 }

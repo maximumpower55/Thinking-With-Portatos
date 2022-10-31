@@ -157,4 +157,5 @@ public class AdhesionGel extends GelFlat {
 	public BlockRenderType getRenderType(BlockState state) {
 		return BlockRenderType.MODEL;
 	}
+
 }

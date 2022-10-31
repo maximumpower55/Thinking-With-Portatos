@@ -1,7 +1,6 @@
 package com.fusionflux.portalcubed.items;
 
 import com.fusionflux.portalcubed.PortalCubed;
-import com.fusionflux.portalcubed.config.PortalCubedConfig;
 import com.fusionflux.portalcubed.entity.PortalCubedEntities;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.item.ArmorItem;
@@ -50,7 +49,7 @@ public class PortalCubedItems {
 
 
 	public static void registerItems() {
-		if (PortalCubedConfig.enableLongFallBoots) Registry.register(Registry.ITEM, new Identifier(PortalCubed.MODID, "long_fall_boots"), LONG_FALL_BOOTS);
+		Registry.register(Registry.ITEM, new Identifier(PortalCubed.MODID, "long_fall_boots"), LONG_FALL_BOOTS);
 
 		Registry.register(Registry.ITEM, new Identifier(PortalCubed.MODID, "portal_gun"), PORTAL_GUN);
 		Registry.register(Registry.ITEM, new Identifier(PortalCubed.MODID, "portal_gun_frame"), PORTAL_GUN_FRAME);

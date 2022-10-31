@@ -5,6 +5,7 @@ import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 
 public class PortalCubedSounds {
+
 	public static final Identifier GEL_BOUNCE = new Identifier("portalcubed:gelbounce");
 	public static final Identifier GEL_RUN = new Identifier("portalcubed:gelrun");
 	public static final Identifier PORTAL_GUN_PRIMARY = new Identifier("portalcubed:portalgunprimary");
@@ -66,6 +67,8 @@ public class PortalCubedSounds {
 		Registry.register(Registry.SOUND_EVENT, CUBE_HIT_HIGH, CUBE_HIGH_HIT_EVENT);
 		Registry.register(Registry.SOUND_EVENT, CUBE_HIT_LOW, CUBE_LOW_HIT_EVENT);
 		Registry.register(Registry.SOUND_EVENT, CUBE_SCRAPE, CUBE_SCRAPE_EVENT);
+		Registry.register(Registry.SOUND_EVENT, EXILE_SONG, EXILE_MUSIC_EVENT);
+
 		Registry.register(Registry.SOUND_EVENT, COMPANION_CUBE_AMBIANCE, COMPANION_CUBE_AMBIANCE_EVENT);
 		Registry.register(Registry.SOUND_EVENT, RADIO_MUSIC, RADIO_MUSIC_EVENT);
 		Registry.register(Registry.SOUND_EVENT, CURIOSITY_CORE_SOUND, CURIOSITY_CORE_EVENT);
@@ -76,4 +79,5 @@ public class PortalCubedSounds {
 		Registry.register(Registry.SOUND_EVENT, FACT_CORE_SOUND, FACT_CORE_EVENT);
 		Registry.register(Registry.SOUND_EVENT, ADVENTURE_CORE_SOUND, ADVENTURE_CORE_EVENT);
 	}
+
 }

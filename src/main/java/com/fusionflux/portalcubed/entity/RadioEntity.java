@@ -16,6 +16,7 @@ import java.util.Locale;
 import java.util.Objects;
 
 public class RadioEntity extends CorePhysicsEntity {
+
 	public RadioEntity(EntityType<? extends PathAwareEntity> type, World world) {
 		super(type, world);
 	}
@@ -65,13 +66,6 @@ public class RadioEntity extends CorePhysicsEntity {
 						world.playSoundFromEntity(null, this, PortalCubedSounds.EXILE_MUSIC_EVENT, this.getSoundCategory(), .5f, 1f);
 						t = 5390;
 					}
-				}else{
-					t--;
-					if (t <= 0) {
-						world.playSoundFromEntity(null, this, PortalCubedSounds.RADIO_MUSIC_EVENT, this.getSoundCategory(), 1f, 1f);
-
-						t = 6600;
-					}
 				}
 			} else {
 				t--;
@@ -89,4 +83,5 @@ public class RadioEntity extends CorePhysicsEntity {
 		super.onSpawnPacket(packet);
 		t = 0;
 	}
+
 }
