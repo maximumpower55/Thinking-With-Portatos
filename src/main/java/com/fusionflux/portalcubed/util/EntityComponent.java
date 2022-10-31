@@ -13,7 +13,7 @@ import java.util.*;
 public class EntityComponent implements PortalCubedComponent, AutoSyncedComponent {
 	boolean gravityState = false;
 	VoxelShape portalCutout = VoxelShapes.empty();
-	//Vec3d velocity = Vec3d.ZERO;
+
 	boolean hasTeleportationHappened = false;
 	UUID cubeUUID = null;
 	public List<UUID> portals = new ArrayList<>();
@@ -87,13 +87,11 @@ public class EntityComponent implements PortalCubedComponent, AutoSyncedComponen
 	public void addPortals(UUID portalUUID) {
 		if(!portals.contains(portalUUID))
 		portals.add(portalUUID);
-		//portals = portalUUIDs;
 		PortalCubedComponents.ENTITY_COMPONENT.sync(entity);
 	}
 
 	@Override
 	public void removePortals(UUID portalUUID) {
-		//portals = portalUUIDs;
 		if(!portals.contains(portalUUID))
 		portals.remove(portalUUID);
 		PortalCubedComponents.ENTITY_COMPONENT.sync(entity);
@@ -101,7 +99,6 @@ public class EntityComponent implements PortalCubedComponent, AutoSyncedComponen
 
 	@Override
 	public void readFromNbt(NbtCompound tag) {
-		//velocity = IPHelperDuplicate.getVec3d(tag, "ccaVelocity");
 		String cubeString = tag.getString("cubeUUID");
 		if(!Objects.equals(cubeString, "null")) {
 			cubeUUID = UUID.fromString(tag.getString("cubeUUID"));
@@ -123,7 +120,6 @@ public class EntityComponent implements PortalCubedComponent, AutoSyncedComponen
 
 	@Override
 	public void writeToNbt(NbtCompound tag) {
-		//IPHelperDuplicate.putVec3d(tag, "ccaVelocity", velocity);
 		if(cubeUUID != null) {
 			tag.putString("cubeUUID", cubeUUID.toString());
 		}else{
@@ -136,7 +132,7 @@ public class EntityComponent implements PortalCubedComponent, AutoSyncedComponen
 			number++;
 		}
 		tag.putInt("size", portals.size());
-		//tag.putUuid("cubeUUID",cubeUUID);
+
 		tag.putBoolean("hasTpHappened",hasTeleportationHappened);
 	}
 }

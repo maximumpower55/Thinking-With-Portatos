@@ -195,15 +195,7 @@ public class CorePhysicsEntity extends PathAwareEntity {
 				if (player != null && player.isAlive()) {
 					Vec3d vec3d = player.getCameraPosVec(0);
 					double d = 2;
-					//HitResult hitResult = customRaycast(player,3, 0.0F, false);
-					//if (hitResult.getType() == HitResult.Type.BLOCK) {
-					//	Vec3d resultPos = player.getEyePos().subtract(hitResult.getPos());
-					//	d = Math.sqrt((resultPos.x * resultPos.x) +(resultPos.y * resultPos.y) +(resultPos.z * resultPos.z));
-					//	d -= this.getWidth();
-					//}
-					//if(d>2){
-					//	d=2;
-					//}
+
 					canUsePortals = false;
 					Vec3d vec3d2 = this.getPlayerRotationVector(player.getPitch(),player.getYaw());
 					Vec3d vec3d3 = vec3d.add((vec3d2.x * d) - rotatedOffset.x, (vec3d2.y * d) - rotatedOffset.y, (vec3d2.z * d) - rotatedOffset.z);
@@ -221,13 +213,8 @@ public class CorePhysicsEntity extends PathAwareEntity {
 					if(player.getHorizontalFacing().equals(Direction.EAST)){
 						rotation_yaw=270;
 					}
-					//if(this instanceof RadioEntity){
-					//	rotation_yaw -= 90;
-					//}
 
 					this.setPosition(vec3d3);
-					//this.setVelocity(RotationUtil.vecWorldToPlayer(this.getPos().subtract(lastPos), GravityChangerAPI.getGravityDirection(this)).multiply(.5));
-					//this.velocityModified = true;
 				}else{
 					if(player != null ){
 						setHolderUUID(null);
@@ -241,15 +228,7 @@ public class CorePhysicsEntity extends PathAwareEntity {
 				if (player != null && player.isAlive()) {
 					Vec3d vec3d = player.getCameraPosVec(0);
 					double d = 2;
-				   // HitResult hitResult = customRaycast(player,3, 0.0F, false);
-				   // if (hitResult.getType() == HitResult.Type.BLOCK) {
-				   //	 Vec3d resultPos = player.getEyePos().subtract(hitResult.getPos());
-				   //	 d = Math.sqrt((resultPos.x * resultPos.x) +(resultPos.y * resultPos.y) +(resultPos.z * resultPos.z));
-				   //	 d -= this.getWidth();
-				   // }
-				   // if(d>2){
-				   //	 d=2;
-				   // }
+
 					Vec3d vec3d2 = player.getRotationVec(1.0F);
 					if(player.getHorizontalFacing().equals(Direction.SOUTH)){
 						rotation_yaw=0;
@@ -263,9 +242,7 @@ public class CorePhysicsEntity extends PathAwareEntity {
 					if(player.getHorizontalFacing().equals(Direction.EAST)){
 						rotation_yaw=270;
 					}
-					//if(this instanceof RadioEntity){
-					//	rotation_yaw -= 90;
-					//}
+
 					Vec3d vec3d3 = vec3d.add((vec3d2.x * d) - rotatedOffset.x, (vec3d2.y * d) - rotatedOffset.y, (vec3d2.z * d) - rotatedOffset.z);
 					this.setPosition(vec3d3);
 				}
@@ -294,15 +271,6 @@ public class CorePhysicsEntity extends PathAwareEntity {
 			}
 		}
 	}
-
-   // public void onKilledOther(ServerWorld world, LivingEntity other) {
-   //	 if(!world.isClient) {
-   //		 PlayerEntity player = (PlayerEntity) ((ServerWorld) world).getEntity(getHolderUUID());
-   //		 if (player != null) {
-   //			 CalledValues.setCubeUUID(player,null);
-   //		 }
-   //	 }
-   // }
 
 	protected void updatePostDeath() {
 		if(!world.isClient) {

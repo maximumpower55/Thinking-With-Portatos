@@ -31,7 +31,7 @@ public class ExperimentalPortal extends Entity {
 	private static final Box nullBox = new Box(0, 0, 0, 0, 0, 0);
 
 	private Box cutoutBoundingBox = nullBox;
-	private Box intersectionBoundingBox = nullBox;
+
 	/**
 	 * axisW and axisH define the orientation of the portal
 	 * They should be normalized and should be perpendicular to each other
@@ -168,9 +168,6 @@ return true;
 		}
 		if(!this.world.isClient)
 			((ServerWorld)(this.world)).setChunkForced(getChunkPos().x,getChunkPos().z,true);
-		//if(this.getIntersectionBoundingBox() == nullBox){
-		//	this.calculateIntersectionBox();
-		//}
 
 		if(!world.isClient){
 			Entity player = ((ServerWorld) world).getEntity(CalledValues.getPlayer(this));
@@ -235,10 +232,8 @@ return true;
 	public void syncRotations(){
 		this.setBoundingBox(nullBox);
 		this.setCutoutBoundingBox(nullBox);
-		//this.setIntersectionBoundingBox(nullBox);
 		this.calculateBoundingBox();
 		this.calculateCuttoutBox();
-		//this.calculateIntersectionBox();
 	}
 
 	@Override
@@ -251,8 +246,6 @@ return true;
 			double w =.9;
 			double h = 1.9;
 
-
-			//setBoundingBox(nullBox);
 			Box portalBox = new Box(
 					getPointInPlane(w / 2, h / 2)
 							.add(getNormal().multiply(.2)),
@@ -267,7 +260,6 @@ return true;
 			setBoundingBox(portalBox);
 			return portalBox;
 	}
-
 
 	public Box calculateCuttoutBox() {
 		if (CalledValues.getAxisW(this) == null) {
@@ -292,10 +284,6 @@ return true;
 	}
 
 	public Box calculateIntersectionBox() {
-		if (CalledValues.getAxisW(this) == null) {
-			setIntersectionBoundingBox(nullBox);
-			return nullBox;
-		}
 		double w = .9;
 		double h = 1.9;
 		Box portalBox = new Box(
@@ -309,7 +297,7 @@ return true;
 				getIntersectionPointInPlane(w / 2, -h / 2)
 						.add(getNormal().multiply(-.2))
 		));
-		setIntersectionBoundingBox(portalBox.offset(getFacingDirection().getOffsetX()*.3,getFacingDirection().getOffsetY()*.3,getFacingDirection().getOffsetZ()*.3));
+
 		return portalBox;
 	}
 
@@ -317,16 +305,8 @@ return true;
 		return this.cutoutBoundingBox;
 	}
 
-	public final Box getIntersectionBoundingBox(double width) {
-		return this.getBoundingBox().offset(getFacingDirection().getOffsetX()*width,getFacingDirection().getOffsetY()*width,getFacingDirection().getOffsetZ()*width);
-	}
-
 	public final void setCutoutBoundingBox(Box boundingBox) {
 		this.cutoutBoundingBox = boundingBox;
-	}
-
-	public final void setIntersectionBoundingBox(Box boundingBox) {
-		this.intersectionBoundingBox = boundingBox;
 	}
 
 

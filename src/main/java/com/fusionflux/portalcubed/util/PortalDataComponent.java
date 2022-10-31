@@ -4,7 +4,6 @@ import com.fusionflux.portalcubed.entity.ExperimentalPortal;
 import dev.onyxstudios.cca.api.v3.component.sync.AutoSyncedComponent;
 import net.minecraft.entity.Entity;
 import net.minecraft.nbt.NbtCompound;
-import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.Vec3d;
 
 import java.util.Objects;
@@ -79,33 +78,28 @@ public class PortalDataComponent implements CustomPortalDataComponent, AutoSynce
 	}
 
 	@Override
-	public void teleportEntity(Vec3d TeleportTo, Entity TeleportedEntity, ExperimentalPortal OtherPortal) {
-		//if(entity.getFacingDirection() != Direction.UP && entity.getFacingDirection() != Direction.DOWN) {
-		Vec3d TeleportLocation = OtherPortal.getPos();
-		//todo: Try using a switch here
-		if(OtherPortal.getFacingDirection() == Direction.NORTH) {
-			TeleportLocation.subtract(0,0,3);
+	public void teleportEntity(Vec3d teleportTo, Entity teleportedEntity, ExperimentalPortal otherPortal) {
+		Vec3d teleportLocation = otherPortal.getPos();
+
+		switch (otherPortal.getFacingDirection()) {
+			case NORTH:
+				teleportLocation.subtract(0,0,3);
+
+			case SOUTH:
+				teleportLocation.add(0,0,3);
+
+			case WEST:
+				teleportLocation.subtract(3,0,0);
+
+			case EAST:
+				teleportLocation.add(3,0,0);
+
+			default:
+				break;
 		}
 
-		if(OtherPortal.getFacingDirection() == Direction.SOUTH) {
-			TeleportLocation.add(0,0,3);
-		}
+		teleportedEntity.teleport(teleportLocation.getX(), teleportLocation.getY() - 1, teleportLocation.getZ());
 
-		if(OtherPortal.getFacingDirection() == Direction.WEST) {
-			TeleportLocation.subtract(3,0,0);
-		}
-
-		if(OtherPortal.getFacingDirection() == Direction.EAST) {
-			TeleportLocation.add(3,0,0);
-		}
-
-		TeleportedEntity.teleport(TeleportLocation.getX(), TeleportLocation.getY() - 1, TeleportLocation.getZ());
-	   // }
-		//if(entity.getFacingDirection() == Direction.UP && entity.getFacingDirection() == Direction.DOWN) {
-		//	TeleportTo.add(OtherPortal.getFacingDirection().getOpposite().getVector().getX(), OtherPortal.getFacingDirection().getOpposite().getVector().getY(),OtherPortal.getFacingDirection().getOpposite().getVector().getZ());
-		//	TeleportedEntity.teleport(TeleportTo.getX(), TeleportTo.getY() - 1, TeleportTo.getZ());
-		//}
-		//entity.teleport();
 		PortalCubedComponents.PORTAL_DATA.sync(entity);
 	}
 

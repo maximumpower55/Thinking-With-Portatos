@@ -30,8 +30,6 @@ import java.util.stream.Collectors;
 
 public class HardLightBridgeBlock extends BlockWithEntity {
 
-
-
 	public static final BooleanProperty NORTH;
 	public static final BooleanProperty EAST;
 	public static final BooleanProperty SOUTH;
@@ -58,8 +56,6 @@ public class HardLightBridgeBlock extends BlockWithEntity {
 		super(settings);
 		this.setDefaultState(this.stateManager.getDefaultState().with(NORTH, false).with(EAST, false).with(SOUTH, false).with(WEST, false).with(UP, false).with(DOWN, false).with(VERTFACINGUP,Direction.NORTH).with(VERTFACINGDOWN,Direction.NORTH));
 		this.field_26659 = ImmutableMap.copyOf((Map) this.stateManager.getStates().stream().collect(Collectors.toMap(Function.identity(), HardLightBridgeBlock::method_31018)));
-	   // this.setDefaultState(this.stateManager.getDefaultState().with(NORTH, false).with(EAST, false).with(SOUTH, false).with(WEST, false).with(UP, false).with(DOWN, false));
-		//this.field_26659 = ImmutableMap.copyOf((Map) this.stateManager.getStates().stream().collect(Collectors.toMap(Function.identity(), HardLightBridgeBlock::method_31018)));
 	}
 
 	static {
@@ -84,9 +80,6 @@ public class HardLightBridgeBlock extends BlockWithEntity {
 	protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
 		builder.add(NORTH, EAST, WEST, SOUTH, UP, DOWN, VERTFACINGUP, VERTFACINGDOWN);
 	}
-
-
-
 
 	private static VoxelShape method_31018(BlockState blockState) {
 		VoxelShape voxelShape = VoxelShapes.empty();
@@ -146,17 +139,11 @@ public class HardLightBridgeBlock extends BlockWithEntity {
 		return true;
 	}
 
-
 	@Override
 	public BlockRenderType getRenderType(BlockState state) {
 		return BlockRenderType.MODEL;
 	}
 
-  /*  @Override
-	public BlockState rotate(BlockState state, BlockRotation rotation) {
-		return state.with(Properties.FACING, rotation.rotate(state.get(Properties.FACING)));
-	}
-*/
 	@Override
 	public VoxelShape getCollisionShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
 		return this.field_26659.get(state);
@@ -184,7 +171,5 @@ public class HardLightBridgeBlock extends BlockWithEntity {
 	public <T extends BlockEntity> BlockEntityTicker<T> getTicker(World world, BlockState state, BlockEntityType<T> type) {
 		return checkType(type, PortalCubedBlocks.HLB_BLOCK_ENTITY, HardLightBridgeBlockEntity::tick);
 	}
-
-
 
 }

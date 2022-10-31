@@ -56,7 +56,6 @@ public class GelFlat extends Block {
 		propertyMap.put(Direction.UP, Properties.UP);
 		propertyMap.put(Direction.DOWN, Properties.DOWN);
 	}
-	//protected static final VoxelShape SHAPE = Block.createCuboidShape(0.0D, 0.0D, 0.0D, 16D, 1.0D, 16);
 
 	private final Map<BlockState, VoxelShape> field_26659;
 

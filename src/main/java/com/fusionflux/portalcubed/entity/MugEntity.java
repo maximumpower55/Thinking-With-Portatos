@@ -8,7 +8,6 @@ import net.minecraft.entity.data.TrackedData;
 import net.minecraft.entity.data.TrackedDataHandlerRegistry;
 import net.minecraft.entity.mob.PathAwareEntity;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.nbt.NbtCompound;
 import net.minecraft.network.packet.s2c.play.EntitySpawnS2CPacket;
 import net.minecraft.world.GameRules;
 import net.minecraft.world.World;
@@ -21,25 +20,6 @@ public class MugEntity extends CorePhysicsEntity {
 		super(type, world);
 	}
 	Random rand = new Random();
-
-	//int mugType = 20;
-
-	@Override
-	public void writeCustomDataToNbt(NbtCompound compoundTag) {
-		//compoundTag.putInt("mugtype",mugType);
-	}
-
-	@Override
-	public void readCustomDataFromNbt(NbtCompound compoundTag) {
-		//mugType = compoundTag.getInt("mugtype");
-	}
-
-	//public int getMugType(){
-	//	return mugType;
-	//}
-	//public void genMugType(){
-	//		mugType = rand.nextInt(4);
-	//	}
 	public int getMugType(){
 		return getDataTracker().get(MUGTYPE);
 	}

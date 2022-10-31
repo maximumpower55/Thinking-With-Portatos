@@ -57,10 +57,6 @@ public class AdhesionGel extends GelFlat {
 			result = result.add(2, 0, 0);
 		}
 
-//		if (state.get(Properties.UP) && state.get(Properties.DOWN)) { this probably shouldn't be here, if you're being squeezed you shouldn't fly up, todo, check this for me
-//			result = result.add(0, 2, 0);
-//		}
-
 		return result;
 	}
 
@@ -83,7 +79,7 @@ public class AdhesionGel extends GelFlat {
 			if(!(entity instanceof PlayerEntity))
 				GravityChangerAPI.addGravity(entity, new Gravity(GravityChangerAPI.getGravityDirection(entity), 10, 2, "gravity_plate"));
 		}
-		//GravityChangerAPI.addGravity(entity, new Gravity(GravityChangerAPI.getGravityDirection(entity), 10, 30, "gravity_plate"));
+
 		if (((EntityAttachments) entity).portalcubed$getGelTimer() == 0) {
 			if (entity.verticalCollision) {
 				if (direction.y == 1 || Math.abs(direction.y) == 2 && vec3dLast.getY() > 0) {

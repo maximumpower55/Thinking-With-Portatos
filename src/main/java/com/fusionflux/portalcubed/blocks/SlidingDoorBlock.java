@@ -18,11 +18,8 @@ import net.minecraft.state.property.BooleanProperty;
 import net.minecraft.state.property.DirectionProperty;
 import net.minecraft.state.property.EnumProperty;
 import net.minecraft.state.property.Properties;
-import net.minecraft.util.ActionResult;
 import net.minecraft.util.BlockMirror;
 import net.minecraft.util.BlockRotation;
-import net.minecraft.util.Hand;
-import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.MathHelper;
@@ -164,17 +161,6 @@ public class SlidingDoorBlock extends Block {
 		} else {
 			return DoorHinge.RIGHT;
 		}
-	}
-
-	public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
-		//if (this.material == Material.METAL) {
-			return ActionResult.PASS;
-		//} else {
-		//	state = state.cycle(OPEN);
-		//	world.setBlockState(pos, state, 10);
-		//	world.syncWorldEvent(player, state.get(OPEN) ? this.getCloseSoundEventId() : this.getOpenSoundEventId(), pos, 0);
-		//	return ActionResult.success(world.isClient);
-		//}
 	}
 
 	public boolean method_30841(BlockState blockState) {

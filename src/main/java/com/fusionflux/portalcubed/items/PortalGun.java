@@ -35,17 +35,6 @@ public class PortalGun extends Item implements DyeableItem {
 		super(settings);
 	}
 
-	/*@Environment(EnvType.CLIENT)
-	public static void registerAlternateModels() {
-		FabricModelPredicateProviderRegistry.register(PortalCubedItems.PORTAL_GUN, portalcubed.id("variant"), (stack, world, livingEntity) -> {
-			if (livingEntity == null) {
-				return 0;
-			}
-			// Defaults to 0
-			return stack.getOrCreateTag().getInt("variant");
-		});
-	}*/
-
 	@Override
 	public int getColor(ItemStack stack) {
 		NbtCompound compoundTag = stack.getOrCreateNbt();
@@ -267,7 +256,6 @@ public class PortalGun extends Item implements DyeableItem {
 			bottomValidBlock=true;
 		}
 
-		//System.out.println("portalInvalid");
 		return (world.getBlockState(topBehind).isSideSolidFullSquare(world, topBehind, portalFacing)) &&
 				(world.getBlockState(bottomBehind).isSideSolidFullSquare(world, bottomBehind, portalFacing) &&
 						topValidBlock &&
@@ -318,17 +306,5 @@ public class PortalGun extends Item implements DyeableItem {
 
 		return IPQuaternion.matrixToQuaternion(axisW, axisH, normal);
 	}
-
-	//public static IPQuaternion getPortalOrientationQuaternion(
-	//		Vec3d axisW, Vec3d axisH
-	//) {
-	//	Vec3f normal = new Vec3f((float)axisW.getX(),(float)axisW.getY(),(float)axisW.getZ());
-	//	normal.cross(new Vec3f((float)axisW.getX(),(float)axisW.getY(),(float)axisW.getZ()));
-	//	Vec3d aW = new Vec3d(axisW.getX(),axisW.getY(),axisW.getZ());
-	//	Vec3d aH = new Vec3d(axisH.getX(),axisH.getY(),axisH.getZ());
-	//	Vec3d aN = new Vec3d(normal.getX(),normal.getY(),normal.getZ());
-//
-	//	return IPQuaternion.matrixToQuaternion(aW, aH, aN);
-	//}
 
 }
