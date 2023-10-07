@@ -2,6 +2,7 @@ package com.fusionflux.portalcubed.mixin.client;
 
 import com.fusionflux.portalcubed.accessor.CameraExt;
 import com.fusionflux.portalcubed.client.PortalCubedClient;
+import com.fusionflux.portalcubed.client.render.portal.PortalCameraTransformation;
 import com.fusionflux.portalcubed.util.CameraControl;
 import net.minecraft.client.Camera;
 import net.minecraft.client.CameraType;
@@ -46,6 +47,10 @@ public abstract class CameraMixin implements CameraExt {
 		final CameraControl ctrl = new CameraControl(camera.getPosition(), camera.getYRot(), camera.getXRot());
 		PortalCubedClient.moveCameraIfDead(camera, entity, cameraType, partialTick, ctrl);
 		PortalCubedClient.transformCameraIntersectingPortal(camera, entity, cameraType, partialTick, ctrl);
+
+		final var transformation = PortalCameraTransformation.stack.peekLast();
+		if (transformation != null) transformation.transform(ctrl, partialTick);
+
 		if (ctrl.getPos() != camera.getPosition()) {
 			setPosition(ctrl.getPos());
 		}

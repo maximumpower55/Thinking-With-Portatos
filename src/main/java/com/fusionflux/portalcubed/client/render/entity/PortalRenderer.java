@@ -32,8 +32,8 @@ import java.util.UUID;
 import static com.fusionflux.portalcubed.PortalCubed.id;
 
 public class PortalRenderer extends EntityRenderer<Portal> {
-	private static final ResourceLocation SQUARE_TEXTURE = id("textures/entity/portal_square_outline_closed.png");
-	private static final ResourceLocation ROUND_TEXTURE  = id("textures/entity/portal_oval_outline_closed.png");
+	private static final ResourceLocation SQUARE_TEXTURE = id("textures/entity/portal_square_outline_open.png");
+	private static final ResourceLocation ROUND_TEXTURE  = id("textures/entity/portal_oval_outline_open.png");
 	private static final ResourceLocation SQUARE_TEXTURE_TRACER = id("textures/entity/portal_tracer_square.png");
 	private static final ResourceLocation ROUND_TEXTURE_TRACER = id("textures/entity/portal_tracer_oval.png");
 	protected final PortalModel model = new PortalModel(Minecraft.getInstance().getEntityModels().bakeLayer(PortalModel.MAIN_LAYER));

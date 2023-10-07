@@ -9,6 +9,7 @@ import com.fusionflux.portalcubed.PortalCubedConfig;
 import com.fusionflux.portalcubed.entity.Portal;
 import com.fusionflux.portalcubed.mixin.client.LevelRendererAccessor;
 import com.fusionflux.portalcubed.mixin.client.MinecraftAccessor;
+import com.fusionflux.portalcubed.mixin.client.RenderSystemAccessor;
 import com.mojang.blaze3d.pipeline.RenderTarget;
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.BufferUploader;
@@ -70,12 +71,13 @@ public final class PortalRendering {
 		shader.clear();
 	}
 
-	private static void renderPortal(WorldRenderContext ctx, Portal portal) {
+	private static void renderPortal(PoseStack poseStack, WorldRenderContext ctx, Portal portal) {
 		final var mainTarget = Minecraft.getInstance().getMainRenderTarget();
 		final var portalTarget = createPortalTarget(mainTarget.width, mainTarget.height);
 		mainTarget.unbindWrite();
 		portalTarget.bindWrite(false);
 		RenderSystem.clear(GL11.GL_DEPTH_BUFFER_BIT | GL11.GL_COLOR_BUFFER_BIT | GL11.GL_STENCIL_BUFFER_BIT, Minecraft.ON_OSX);
+		GL11.glEnable(GL32.GL_DEPTH_CLAMP);
 		{
 			GL11.glEnable(GL11.GL_STENCIL_TEST);
 			GL11.glStencilFunc(GL11.GL_ALWAYS, 1, 0xFF);
@@ -87,7 +89,7 @@ public final class PortalRendering {
 			RenderSystem.enableDepthTest();
 			RenderSystem.depthFunc(GL11.GL_LEQUAL);
 
-			PortalStencil.render(portal, ctx.matrixStack(), ctx.projectionMatrix(), GameRenderer.getPositionShader());
+			PortalStencil.render(portal, poseStack, ctx.projectionMatrix(), GameRenderer.getPositionShader());
 
 			GL11.glStencilFunc(GL11.GL_EQUAL, 1, 0xFF);
 			GL11.glStencilMask(0x00);
@@ -104,9 +106,10 @@ public final class PortalRendering {
 
 		ctx.gameRenderer().setRenderHand(false);
 
-		VirtualPortalCamera.setup(portal, ctx.tickDelta());
+		PortalCameraTransformation.push(portal);
 		{
-			final var oldProjectionMatrix = RenderSystem.getProjectionMatrix();
+			final var oldPoseStack = RenderSystem.getModelViewStack();
+			final var oldProjectionMatrix = ctx.projectionMatrix();
 			layer++;
 			RenderSystem.disableDepthTest();
 			((LevelRendererAccessor) ctx.worldRenderer()).portalcubed$setRenderChunksInFrustum(new ObjectArrayList<>());
@@ -115,8 +118,10 @@ public final class PortalRendering {
 			RenderSystem.enableDepthTest();
 			layer--;
 			ctx.gameRenderer().resetProjectionMatrix(oldProjectionMatrix);
+			RenderSystemAccessor.setModelViewStack(oldPoseStack);
+			RenderSystem.applyModelViewMatrix();
 		}
-		VirtualPortalCamera.reset();
+		PortalCameraTransformation.pop();
 
 		{
 			GL11.glDisable(GL11.GL_STENCIL_TEST);
@@ -135,7 +140,7 @@ public final class PortalRendering {
 
 		blitShader.SCREEN_SIZE.set((float) portalTarget.width, (float) portalTarget.height);
 		blitShader.setSampler("Sampler0", portalTarget.getColorTextureId());
-		PortalStencil.render(portal, ctx.matrixStack(), ctx.projectionMatrix(), blitShader);
+		PortalStencil.render(portal, poseStack, ctx.projectionMatrix(), blitShader);
 	}
 
 	public static void init() {
@@ -157,7 +162,7 @@ public final class PortalRendering {
 					poseStack.translate(portal.getPosition(ctx.tickDelta()).x, portal.getPosition(ctx.tickDelta()).y, portal.getPosition(ctx.tickDelta()).z);
 					poseStack.mulPose(portal.getRotation().get(ctx.tickDelta()));
 					poseStack.mulPose(Axis.YP.rotationDegrees(180));
-					renderPortal(ctx, portal);
+					renderPortal(poseStack, ctx, portal);
 					poseStack.popPose();
 				}
 			}

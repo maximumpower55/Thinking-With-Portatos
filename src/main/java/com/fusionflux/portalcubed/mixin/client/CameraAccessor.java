@@ -12,5 +12,5 @@ public interface CameraAccessor {
 	void portalcubed$setPosition(Vec3 pos);
 
 	@Invoker("setRotation")
-	void portalcubed$setRotation(float yRot, float xRot);
+	void portalcubed$setRotation(float yaw, float pitch);
 }
