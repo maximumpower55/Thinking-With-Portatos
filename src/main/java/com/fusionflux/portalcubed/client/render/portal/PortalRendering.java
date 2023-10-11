@@ -7,6 +7,7 @@ import org.lwjgl.opengl.GL32;
 import com.fusionflux.portalcubed.PortalCubed;
 import com.fusionflux.portalcubed.PortalCubedConfig;
 import com.fusionflux.portalcubed.entity.Portal;
+import com.fusionflux.portalcubed.mixin.client.GameRendererAccessor;
 import com.fusionflux.portalcubed.mixin.client.LevelRendererAccessor;
 import com.fusionflux.portalcubed.mixin.client.MinecraftAccessor;
 import com.fusionflux.portalcubed.mixin.client.RenderSystemAccessor;
@@ -104,6 +105,7 @@ public final class PortalRendering {
 		final var oldRenderChunksInFrustum = ((LevelRendererAccessor) ctx.worldRenderer()).portalcubed$getRenderChunksInFrustum();
 		((LevelRendererAccessor) ctx.worldRenderer()).portalcubed$setCapturedFrustum(null);
 
+		final var oldRenderHand = ((GameRendererAccessor) ctx.gameRenderer()).portalcubed$getRenderHand();
 		ctx.gameRenderer().setRenderHand(false);
 
 		PortalCameraTransformation.push(portal);
@@ -113,7 +115,6 @@ public final class PortalRendering {
 			layer++;
 			RenderSystem.disableDepthTest();
 			((LevelRendererAccessor) ctx.worldRenderer()).portalcubed$setRenderChunksInFrustum(new ObjectArrayList<>());
-			// TODO: Pose stack is leaking?????
 			ctx.gameRenderer().renderLevel(ctx.tickDelta(), Util.getNanos(), new PoseStack());
 			RenderSystem.enableDepthTest();
 			layer--;
@@ -122,6 +123,8 @@ public final class PortalRendering {
 			RenderSystem.applyModelViewMatrix();
 		}
 		PortalCameraTransformation.pop();
+
+		ctx.gameRenderer().setRenderHand(oldRenderHand);
 
 		{
 			GL11.glDisable(GL11.GL_STENCIL_TEST);

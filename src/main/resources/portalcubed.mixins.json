@@ -41,6 +41,7 @@
     "client.FogRendererMixin",
     "client.GlStateManagerMixin",
     "client.GameRendererMixin",
+    "client.GameRendererAccessor",
     "client.GuiMixin",
     "client.ItemEntityRendererMixin",
     "client.ItemInHandRendererMixin",
